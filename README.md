@@ -12,14 +12,14 @@ ________/\\\\\\\\\__/\\\________/\\\__/\\\\\\\\\\\__/\\\\\\\\\\\\\\\__/\\\\\\\\\
         _________________________________________________________________________________________________________ 
 ```
 
-#WELCOME TO THE CHIZEL READ ME FILE. ENJOY!!!!!
+#WELCOME TO THE CHIZEL. ENJOY!!!!!
 
 ##ABOUT
 Chizel is a cloud storage integrator.  It streamlines the process of collecting cloud artifacts on a box in order to gain access to a cloud storage account.  When access to the account is granted, data stored on the cloud is collected, analyzed, and presented in a clear manner.  If Chizel can not gain access to the cloud storage account, it will analyze what it can from the box.
 
 ##INSTALLATION
 Chizel is portable, so just run it from a flash drive or something.
-
+Chizel can also be installed as an executable
 ##USAGE
 
 ##CONTACT
