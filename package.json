@@ -1,0 +1,16 @@
+{
+  "name"    : "Chizel",
+  "version" : "0.1.0",
+  "main"    : "./browser/main.js",
+
+  "scripts" : {
+    "dev" : "electron ."
+  },
+  "dependencies":{
+    "electron-prebuilt":"^0.34.0",
+    "jquery":"^1.7.4",
+    "bootstrap":"^3.3.5",
+    "underscore-plus":"^1.6.6",
+    "fs-plus":"^2.8.1"
+  }
+}
