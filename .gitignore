@@ -1,1 +1,16 @@
-node_modules/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+.project
+.svn
+.nvm-version
+node_modules
+npm-debug.log
+debug.log
+/tags
+/atom-shell/
+/electron/
+docs/output
+docs/includes
+spec/fixtures/evil-files/
