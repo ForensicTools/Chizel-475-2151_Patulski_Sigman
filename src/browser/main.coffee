@@ -1,26 +1,29 @@
 app = require 'app'
-BrowserWindow = require 'browser-window'
 crashReport = require 'crash-reporter'
 path = require 'path'
+fs = require 'fs'
 
 start = () ->
-    crashReport.start()
 
-    mainWindow = null
 
-    app.on 'ready', spawnWindow
-    app.on 'closed', destoryWindow
+    args = parseChizelFile()
 
-    #console.log app.getLocale()
+    app.on 'ready' ->
 
-destoryWindow = () ->
-    @mainWindow = null
+        ChizelApplication = require path.join(args.resource , 'src', 'browser', 'atom-application')
+        @ChizelApplication.open(args)
 
-spawnWindow = () ->
+normalizeDriveLetterName = (filePath) ->
+    filePath.replace /^([a-z]):/, (driveLetter) -> driveLetter.toUpperCase() + ":"
 
-    path = path.dirname __dirname
-    @mainWindow = new BrowserWindow({width:800, height:600})
+setUpCrashReporter = ->
+    crashReport.start(product: "Chizel" , company: "Spider Security Inc.")
 
-    @mainWindow.loadUrl('file://' + path + '/static/index.html' );
+setupChizelHome = ->
+
+
+parseChizelFile = ->
+
+
 
 start()
