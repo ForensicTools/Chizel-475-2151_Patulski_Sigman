@@ -12,3 +12,4 @@ class ChizelApplication
         @ChizelApplication = new ChizelApplication(options)
 
     constructor: (options) ->
+        
