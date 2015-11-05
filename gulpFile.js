@@ -25,8 +25,8 @@ var bootstrapDest = ['static/lib/bootstrap/css/',
                      'static/lib/bootstrap/fonts/',
                      'static/lib/bootstrap/js/'];
 
-var lessSource = ['./static/less/*.less'];
-var lessDest = './static/css/*';
+var lessSource = 'static/less/*.less';
+var lessDest = 'static/css/';
 
 gulp.task('coffee', function() {
     for (var _i = 0; _i < coffeeDir.length; _i++)
@@ -64,6 +64,7 @@ gulp.task('genlib',['jquery', 'bootstrap', 'bootstrapFont']);
 
 gulp.task('watch', function(){
     gulp.watch('src/**/*.coffee', ['coffee']);
+    gulp.watch('static/less/*.less', ['less']);
 });
 
 
