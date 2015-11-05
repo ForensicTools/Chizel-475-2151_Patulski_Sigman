@@ -5,60 +5,56 @@
     <title>Chizel</title>
     <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="css/chizel.css">
+    <link rel="stylesheet" href="lib/bootstrap/fonts/glyphicons-halflings-regular.woff">
     <srcipts src="lib/jquery/jquery.js"></script>
     <srcipts src="lib/bootstrap/bootstrap.js"></script>
     <srcipts src="scripts/render/ui-control.js"></script>
   </head>
   <body>
-      <div class="container-fliud">
+      <div class="container">
           <div class="row">
-              <div class="col-xs-2">
-                  <div class="side-bar">
-                    <ul >
-                        <li class="list-button-itemn">
-                            <button type="button" class="list-button">
-                                <span class="glypicon glyphicon-hdd"></span>
-                            </button>
-                         </li>
-                        <!-- <li class="list-group-item">
-                            <button type="button" class="btn btn-default">
-                                <span class="glypicon glyphicon-registration-mark"></span>
-                            </button>
-                        </li>
-                        <li class="list-group-item">
-                            <button type="button" class="btn btn-default">
-                                <span class="glypicon glyphicon-option-horizontal"></span>
-                            </button>
-                        </li> -->
-                    </ul>
-                  </side-bar>
+              <div class="side-bar">
+                    <button type="button" class="btn btn-default">
+                        <span class ="glyphion glyphicon-hdd"> </span>
+                    </button>
+                    <button type="button" class="btn btn-default">
+                        <span class ="glyphion glyphicon-hdd"> </span>
+                    </button>
+                    <button type="button" class="btn btn-default">
+                        <span class ="glyphion glyphicon-hdd"> </span>
+                    </button>
               </div>
-              <div class="col-xs-3" >
-                  <div class="gutter">
+              <div class="gutter">
+                  <div class="btn-group">
+                      <div class="gutter-menu">
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Action <span class="caret"></span>
+                          </button>
+
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                          </ul>
+                  </div>
+                  <div class="gutter-display">
 
                   </div>
-              </div>
-              <div class="resizer-handler"></div>
-              <div class="col-xs-9">
-                  <div class="main-window">
-                      <ul class="nav nav-tabs">
-                          <li role="presentation" class="active"><a href="#">Home</a></li>
-                          <li role="presentation"><a href="#">fill 1</a></li>
-                          <li role="presentation"><a href="#">fill 2</a></li>
-                      </ul>
-                      <div class="jumbotron">
-                          <h1>Hello, Welcome to Chizel!</h1>
-                          <p><a class="btn btn-primary btn-lg" role="button"></a>Learn More</p>
-                      </div>
+                  <div class="gutter-buttom">
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-9">
-                    <div class="console">
-                    </div>
-                </div>
-            </div>
+              <div class="col-offset-400">
+                  <div class="row">
+                      <div class="col-md-9">
+
+                      </div >
+                  </div>
+              </div>
+
+          </div>
         </div>
   </body>
 <html>
