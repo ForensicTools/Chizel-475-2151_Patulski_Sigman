@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Chizel</title>
     <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
-
+    <link rel="stylesheet" href="css/chizel.css">
     <srcipts src="lib/jquery/jquery.js"></script>
     <srcipts src="lib/bootstrap/bootstrap.js"></script>
     <srcipts src="scripts/render/ui-control.js"></script>
@@ -13,14 +13,14 @@
       <div class="container-fliud">
           <div class="row">
               <div class="col-xs-2">
-                  <div id="SideBar">
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <button type="button" class="btn btn-default">
+                  <div class="side-bar">
+                    <ul >
+                        <li class="list-button-itemn">
+                            <button type="button" class="list-button">
                                 <span class="glypicon glyphicon-hdd"></span>
                             </button>
                          </li>
-                        <li class="list-group-item">
+                        <!-- <li class="list-group-item">
                             <button type="button" class="btn btn-default">
                                 <span class="glypicon glyphicon-registration-mark"></span>
                             </button>
@@ -29,29 +29,34 @@
                             <button type="button" class="btn btn-default">
                                 <span class="glypicon glyphicon-option-horizontal"></span>
                             </button>
-                        </li>
+                        </li> -->
                     </ul>
-                  </div>
+                  </side-bar>
               </div>
               <div class="col-xs-3" >
-                  <div id="gutter">
+                  <div class="gutter">
+
                   </div>
               </div>
+              <div class="resizer-handler"></div>
               <div class="col-xs-9">
-                  <ul class="nav nav-tabs">
-                      <li role="presentation" class="active"><a href="#">Home</a></li>
-                      <li role="presentation"><a href="#">fill 1</a></li>
-                      <li role="presentation"><a href="#">fill 2</a></li>
-                  </ul>
-                  <div class="jumbotron">
-                      <h1>Hello, Welcome to Chizel!</h1>
-                      <p>...</p>
-                      <p><a class="btn btn-primary btn-lg" role="button"></a>Learn More</p>
-                  </div>
+                  <div class="main-window">
+                      <ul class="nav nav-tabs">
+                          <li role="presentation" class="active"><a href="#">Home</a></li>
+                          <li role="presentation"><a href="#">fill 1</a></li>
+                          <li role="presentation"><a href="#">fill 2</a></li>
+                      </ul>
+                      <div class="jumbotron">
+                          <h1>Hello, Welcome to Chizel!</h1>
+                          <p><a class="btn btn-primary btn-lg" role="button"></a>Learn More</p>
+                      </div>
+                </div>
               </div>
             </div>
             <div class="row">
-                <div class="console">
+                <div class="col-xs-9">
+                    <div class="console">
+                    </div>
                 </div>
             </div>
         </div>
