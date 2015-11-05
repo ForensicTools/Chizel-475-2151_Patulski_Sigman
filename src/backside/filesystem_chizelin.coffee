@@ -1,7 +1,15 @@
+<<<<<<< HEAD
 `
 "Test";
 var fs = require('fs');
 var path = require('path');
+=======
+
+`
+"""
+	Test
+"""
+>>>>>>> 5b02c5114e558e4108fd84f29b7d368df17a50f0
 
 var diretoryTreeToObj = function(dir, done) {
     var results = [];
@@ -10,6 +18,7 @@ var diretoryTreeToObj = function(dir, done) {
         if (err)
             return done(err);
 
+<<<<<<< HEAD
         var pending = list.length;
 
         if (!pending)
@@ -54,4 +63,7 @@ diretoryTreeToObj(dirTree, function(err, res){
 
     //console.log(res);
 });
+=======
+cmd.run('dir /s | FINDSTR OneDrive');
+>>>>>>> 5b02c5114e558e4108fd84f29b7d368df17a50f0
 `

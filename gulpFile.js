@@ -1,11 +1,19 @@
 var gulp = require('gulp'),
     gutil = require('gulp-util'),
     coffee = require('gulp-coffee'),
+    less = require('gulp-less'),
     concat = require('gulp-concat');
 
 
-var coffeeSources =
-    ['src/browser/*.coffee'];
+var coffeeFile = '*.coffee';
+
+var coffeeSource = 'src/';
+var coffeeDest = 'scripts/';
+
+var coffeeDir =
+    ['browser/',
+    'backside/',
+    'render/'];
 
 var jquerySource = ['node_modules/jquery/dist/*'];
 
@@ -17,13 +25,27 @@ var bootstrapDest = ['static/lib/bootstrap/css/',
                      'static/lib/bootstrap/fonts/',
                      'static/lib/bootstrap/js/'];
 
+var lessSource = 'static/less/*.less';
+var lessDest = 'static/css/';
 
 gulp.task('coffee', function() {
-    gulp.src(coffeeSources)
-    .pipe( coffee({bare: true})
+    for (var _i = 0; _i < coffeeDir.length; _i++)
+    {
+        gulp.src(coffeeSource + coffeeDir[_i] + coffeeFile)
+        .pipe( coffee({bare: true})
         .on('error',gutil.log))
-    .pipe(gulp.dest('./scripts'));
+        .pipe(gulp.dest(coffeeDest + coffeeDir[_i]));
+    }
+
 });
+
+gulp.task('less', function(){
+    gulp.src(lessSource)
+    .pipe(less()
+    .on('error',gutil.log))
+    .pipe(gulp.dest(lessDest));
+});
+
 
 gulp.task('jquery', function (){
   gulp.src(jquerySource).pipe(gulp.dest('static/lib/jquery/'));
@@ -41,8 +63,9 @@ gulp.task('bootstrapFont', function(){
 gulp.task('genlib',['jquery', 'bootstrap', 'bootstrapFont']);
 
 gulp.task('watch', function(){
-    gulp.watch(coffeeSources, ['coffee']);
+    gulp.watch('src/**/*.coffee', ['coffee']);
+    gulp.watch('static/less/*.less', ['less']);
 });
 
 
-gulp.task('default', ['coffee','watch']);
+gulp.task('default', ['coffee','less','watch']);
