@@ -1,95 +1,72 @@
-@import "ui-variables";
+@import 'ui-variables';
 
-div.side-bar{
+html,
+body{
+    width:100%;
+    height:100%;
+}
+
+div.side-bar
+{
+    width:100px;
+    background: @tool-panel-background-color;
     position: fixed;
     left:0px;
-    top:0px;
-    bottom: 0px;
-    background-color:@tool-panel-background-color;
-    width:auto;
     height: 100%;
-    padding: 10px;
+    background-color: @tool-panel-background-color;
+    button.btn
+    {
+        background-color: @button-background-color;
+        width: 75px;
+        height: 75px;
+        margin: 10px;
+        position: relative;
+    }
 
 }
-ul{
-    height: 100%;
-    width: 100%;
-    border:none;
-    list-style-type: none;
-}
-li.list-button-item{
-    height: 100px;
-    width: 100px;
-    padding: 0px;
-}
-button.list-button{
-    height: 100%;
-    width: 100%;
-    padding: 0px;
-}
-div.main-window{
-    height: auto;
-    width: auto;
-    display: none;
-}
-div.gutter{
-    height: 100%;
-    display:none;
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    bottom: 0px;
+div.gutter
+{
 
-}
-
-div.console{
-    width: 100%;
+    width:300px;
+    background: blue;
     position: fixed;
-    right: 0px;
-    bottom: 0px;
-
-}
-
-
-html, body {
+    left: 100px;
     height: 100%;
-    width: 100%;
-    padding: 0;
-    margin: 0;;
-    background-color: @app-background-color;
-}
 
-// #wrapper {
-//     display: table;
-//     width: 100%;
-//     height: 100%;
-// }
-// #wrapper > div {
-//     display: table-row;
-// }
-// #wrapper > div > div {
-//     display: table-cell;
-// }
-// #top,
-// #bottom {
-//     height: 50px;
-// }
-// #wrapper > div > #topleft,
-// #wrapper > div > #middleleft,
-// #wrapper > div > #bottomleft {
-//     width: 300px;
-// }
-// #wrapper > div > #middleleft {
-//     background: #23A9E0;
-// }
-// #wrapper > div > #middleright {
-//     background: #39E023;
-// }
-// #wrapper > div > #topright,
-// #wrapper > div > #bottomright {
-//     background: #208D11;
-// }
-// #wrapper > div > #topleft,
-// #wrapper > div > #bottomleft {
-//     background: #092A7C;
-// }
+}
+div.gutter-menu
+{
+    position:relative;
+    top: 0px;
+    width: 300px;
+    height: 10%;
+    background-color: @tool-panel-background-color;
+    button.btn
+    {
+        background-color: @button-background-color;
+        position: fixed;
+        width: inherit;
+        height: inherit;
+    }
+}
+div.gutter-display
+{
+    overflow: scroll;
+    height: 80%;
+    width: 250px;
+    position: fixed;
+    background-color:pink;
+
+}
+div.gutter-buttom
+{
+    position: fixed;
+    bottom: 0px;
+    width: 300px;
+    height: 10%;
+    background-color: black;
+}
+.col-offset-400{
+
+    padding-left: 415px;
+}
