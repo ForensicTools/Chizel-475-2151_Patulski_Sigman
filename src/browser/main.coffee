@@ -5,12 +5,12 @@ fs = require 'fs'
 
 start = ->
 
-    resourcePath = path.dirname(__dirname)
+    resourcePath = path.dirname(path.dirname(__dirname))
     args = parseChizelFile(resourcePath)
 
     app.on 'ready', ->
 
-        ChizelApplication = require path.join(resourcePath ,  'scripts', 'chizel-application')
+        ChizelApplication = require path.join(resourcePath ,  'scripts', 'browser','chizel-application')
         ChizelApplication.open(args)
         setUpCrashReporter()
         console.log args
