@@ -3,13 +3,6 @@
 "Test";
 var fs = require('fs');
 var path = require('path');
-=======
-
-`
-"""
-	Test
-"""
->>>>>>> 5b02c5114e558e4108fd84f29b7d368df17a50f0
 
 var diretoryTreeToObj = function(dir, done) {
     var results = [];
@@ -18,7 +11,6 @@ var diretoryTreeToObj = function(dir, done) {
         if (err)
             return done(err);
 
-<<<<<<< HEAD
         var pending = list.length;
 
         if (!pending)
@@ -31,8 +23,17 @@ var diretoryTreeToObj = function(dir, done) {
                 if (stat && stat.isDirectory()) {
                     diretoryTreeToObj(file, function(err, res) {
                         //		console.log(file);
+
 												var str_to_match = file.match(/OneDrive/g);
-												console.log(str_to_match);
+                        if (str_to_match != null){
+                          // fs.stat(file && function(err, stat) {
+                          //   if (stat && stat.isDirectory()) {
+                          //     directoryTreeToObj
+                          //   }
+                          // }
+                          console.log(file)
+                        }
+                        // console.log(str_to_match);
                         // results.push({
                         //     name: path.basename(file),
                         //     type: 'folder',
@@ -42,14 +43,14 @@ var diretoryTreeToObj = function(dir, done) {
                         //     done(null, results);
                     });
                 }
-                // else {
-                //     results.push({
-                //         type: 'file',
-                //         name: path.basename(file)
-                //     });
-                //     if (!--pending)
-                //         done(null, results);
-                // }
+                else {
+                    results.push({
+                        type: 'file',
+                        name: path.basename(file)
+                    });
+                    if (!--pending)
+                        done(null, results);
+                }
             });
         });
     });
@@ -63,7 +64,5 @@ diretoryTreeToObj(dirTree, function(err, res){
 
     //console.log(res);
 });
-=======
-cmd.run('dir /s | FINDSTR OneDrive');
->>>>>>> 5b02c5114e558e4108fd84f29b7d368df17a50f0
+;
 `
