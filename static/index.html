@@ -5,56 +5,57 @@
     <title>Chizel</title>
     <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="css/chizel.css">
-    <link rel="stylesheet" href="lib/bootstrap/fonts/glyphicons-halflings-regular.woff">
     <srcipts src="lib/jquery/jquery.js"></script>
     <srcipts src="lib/bootstrap/bootstrap.js"></script>
     <srcipts src="scripts/render/ui-control.js"></script>
   </head>
   <body>
-      <div class="container">
-          <div class="row">
-              <div class="side-bar">
-                    <button type="button" class="btn btn-default">
-                        <span class ="glyphion glyphicon-hdd"> </span>
-                    </button>
-                    <button type="button" class="btn btn-default">
-                        <span class ="glyphion glyphicon-hdd"> </span>
-                    </button>
-                    <button type="button" class="btn btn-default">
-                        <span class ="glyphion glyphicon-hdd"> </span>
-                    </button>
-              </div>
-              <div class="gutter">
-                  <div class="btn-group">
-                      <div class="gutter-menu">
-                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Action <span class="caret"></span>
-                          </button>
 
-                          <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                          </ul>
-                  </div>
-                  <div class="gutter-display">
+      <div class="side-bar">
+            <button id="hard_drive" type="button" class="btn">
+                <text> H</text>
+            </button>
+            <button id="ram" type="button" class="btn">
+                <text> R</text>
+            </button>
+            <button id="options" type="button" class="btn">
+                <text>*</text>
+            </button>
+      </div>
+      <div class="gutter">
+          <div class="gutter-menu">
+              <div class="btn-group">
+                  <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Action <span class="caret"></span>
+                  </button>
 
-                  </div>
-                  <div class="gutter-buttom">
-                  </div>
-                </div>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                  </ul>
               </div>
-              <div class="col-offset-400">
-                  <div class="row">
-                      <div class="col-md-9">
-
-                      </div >
-                  </div>
-              </div>
+          </div>
+          <div class="gutter-display">
 
           </div>
-        </div>
+          <div class="gutter-buttom">
+          </div>
+
+      </div>
+
+      <div class="main-window">
+         <div class="tabs-row">
+
+         </div>
+         <div class="viewer">
+
+         </div>
+         <div class="console">
+
+         </div>
+      </div>
   </body>
 <html>

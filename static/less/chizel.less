@@ -1,72 +1,159 @@
 @import 'ui-variables';
 
+@border-min-style : 1px solid black;
+
+
 html,
 body{
     width:100%;
     height:100%;
+    //border: @border-min-style;
+    z-index: -1;
 }
 
 div.side-bar
 {
+    z-index: -2;
     width:100px;
-    background: @tool-panel-background-color;
     position: fixed;
     left:0px;
     height: 100%;
-    background-color: @tool-panel-background-color;
+    border: @border-min-style;
     button.btn
     {
-        background-color: @button-background-color;
+        padding: 0px;
+        border: @border-min-style;
+        color: black;
+        background-color: white;
         width: 75px;
         height: 75px;
         margin: 10px;
         position: relative;
+        font-size: 50px;
+        font-family: sans-serif;
     }
 
 }
 div.gutter
 {
-
+    z-index: -2;
     width:300px;
-    background: blue;
     position: fixed;
     left: 100px;
     height: 100%;
+    border: @border-min-style;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-top-style: solid;
+    border-left-style: none;
 
-}
-div.gutter-menu
-{
-    position:relative;
-    top: 0px;
-    width: 300px;
-    height: 10%;
-    background-color: @tool-panel-background-color;
-    button.btn
+    div.gutter-menu
     {
-        background-color: @button-background-color;
-        position: fixed;
-        width: inherit;
-        height: inherit;
+        position:fixed;
+        top: 0px;
+        width: 300px;
+        height: 75px;
+        border: @border-min-style;
+        border-bottom-style: solid;
+        border-right-style: none;
+        border-top-style: none;
+        border-left-style: none;
+        div.btn-group
+        {
+            position:relative;
+            margin: 5px;
+            width: 286px;
+            height: 58px;
+            button.btn.dropdown-toggle
+            {
+                border: none;
+                padding: 0px;
+                margin: 5px;
+                background-color: white;
+                position: absolute;
+                top: 0px;
+                width: 286px;
+                height: 58px;
+            }
+        }
     }
-}
-div.gutter-display
-{
-    overflow: scroll;
-    height: 80%;
-    width: 250px;
-    position: fixed;
-    background-color:pink;
+    div.gutter-display
+    {
+        overflow: scroll;
+
+        width: 299px;
+        height: 100%;
+        position: relative;
+        padding-top:75px;
+        padding-bottom:50px;
+
+    }
+    div.gutter-buttom
+    {
+        position: fixed;
+        bottom: 0px;
+        width: 300px;
+        height: 50px;
+        border: @border-min-style;
+        border-top-style: solid;
+        border-right-style: none;
+        border-bottom-style: none;
+        border-left-style: none;
+    }
+
 
 }
-div.gutter-buttom
-{
-    position: fixed;
-    bottom: 0px;
-    width: 300px;
-    height: 10%;
-    background-color: black;
-}
-.col-offset-400{
 
-    padding-left: 415px;
+
+div.main-window {
+    z-index: -2;
+    position: absolute;
+    padding-left: 400px;
+    width: 100%;
+    right:0px;
+    height:100%;
+    border: @border-min-style;
+    border-bottom-style: solid;
+    border-right-style: solid;
+    border-top-style: solid;
+    border-left-style: none;
+
+    div.tabs-row
+    {
+        position: fixed;
+        top: 0px;
+        width:100%;
+        height: 50px;
+        border: @border-min-style;
+        border-bottom-style: solid;
+        border-right-style: none;
+        border-top-style: none;
+        border-left-style: none;
+    }
+    div.viewer
+    {
+        padding-top: 50px;
+        padding-bottom: 100px;
+        width: 100%;
+        height: 100%;
+        position: relative;
+
+        border-bottom-style: none;
+        border-right-style: none;
+        border-top-style: none;
+        border-left-style: none;
+    }
+    div.console
+    {
+        position: fixed;
+        bottom: 0px;
+        width: 100%;
+        height: 100px;
+        border: @border-min-style;
+        border-bottom-style: none;
+        border-right-style: none;
+        border-top-style: solid;
+        border-left-style: none;
+    }
+
 }
