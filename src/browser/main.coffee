@@ -21,6 +21,14 @@ start = ->
         chizel.windowEvents(chizelWindow)
 
 
+        ipc.on 'analyse-hd', (event, data) ->
+            event.sender.send('actionReply', 'yo whats up')
+            
+        ipc.on 'create-case', (event, data) ->
+            console.log data
+            event.sender.send 'actionReply', 'yo get chizelin!!!'
+
+
 class ChizelApplication
     _.extend @prototype, eventEmitter.prototype
     mainWindow: null
@@ -32,19 +40,23 @@ class ChizelApplication
 
     spawnWindow: () ->
         mainWindow = new browserWindow({})
-
+        mainWindow.openDevTools()
         mainWindow.loadUrl url.format
             protocol: 'file'
             pathname:  process.cwd() + "/static/index.html"
             slashs:true
         mainWindow
+
+    destoryWindow = ->
+        app.quit()
+
     createMenu: ->
         menu = new Menu()
         menu.append(new MenuItem({label: 'Open File', click: -> console.log 'openfile'}))
         menu
 
-    normalizeDriveLetterName = (filePath) ->
-        filePath.replace /^([a-z]):/, (driveLetter) -> driveLetter.toUpperCase() + ":"
+    # normalizeDriveLetterName = (filePath) ->
+    #     filePath.replace /^([a-z]):/, (driveLetter) -> driveLetter.toUpperCase() + ":"
 
     setUpCrashReporter = ->
         crashReport.start()
@@ -81,7 +93,7 @@ class ChizelApplication
 
         mainWindow.on 'close', -> #when window is going to close
         mainWindow.on 'closed', ->  #the window is close deference the window object
-
+            destoryWindow(mainWindow)
         mainWindow.on 'unresponsive', => # web page become what it says
 
         mainWindow.on 'responsive', -> # web page is responsive from being unresponsive
