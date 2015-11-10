@@ -5,20 +5,37 @@
     <title>Chizel</title>
     <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="css/chizel.css">
-    <srcipts src="lib/jquery/jquery.js"></script>
-    <srcipts src="lib/bootstrap/bootstrap.js"></script>
-    <srcipts src="scripts/render/ui-control.js"></script>
+
+    <script>window.$ = window.jQuery = require('jquery');</script>
+    <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="./scripts/render/ui-control.js"></script>
+
   </head>
   <body>
 
       <div class="side-bar">
-            <button id="hard_drive" type="button" class="btn">
-                <text> H</text>
+            <button id="new_case" onClick="Create_New_Case()" type="button" class="btn"
+            data-toggle="tooltip" title="Create New Case">
+                <text>N</text>
             </button>
-            <button id="ram" type="button" class="btn">
-                <text> R</text>
+            <button id="add_evidence" onclick="Add_Evidence()" type="button" class="btn"
+            data-toggle="tooltip" title="Add Evidence" style="display:none;">
+                <text>A</text>
             </button>
-            <button id="options" type="button" class="btn">
+            <button id="open_case" onclick="Open_Case()" type="button" class="btn"
+            data-toggle="tooltip" title="Open Case" >
+                <text>O</text>
+            </button>
+            <button id="hard_drive" onclick="Analyze_Hard_Drive()" type="button"
+             class="btn" data-toggle="tooltip" title="Analyze Disk Image" style="display:none;">
+                <text>H</text>
+            </button>
+            <button id="ram" onclick="Analyze_RAM()" type="button" class="btn"
+            data-toggle="tooltip" title="Analyse Ram Dump" style="display:none;">
+                <text>R</text>
+            </button>
+            <button id="options" onclick="Options()" type="button" class="btn"
+            data-toggle="tooltip" title="Open Options">
                 <text>*</text>
             </button>
       </div>
@@ -26,15 +43,12 @@
           <div class="gutter-menu">
               <div class="btn-group">
                   <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Action <span class="caret"></span>
-                  </button>
-
+                    Select Cloud Service <span class="caret"></span>
+                 </button>
                   <ul class="dropdown-menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
+                    <li><a href="#">One Drive</a></li>
+                    <li><a href="#">Google Drive</a></li>
+                    <li><a href="#">DropBox</a></li>
                   </ul>
               </div>
           </div>
