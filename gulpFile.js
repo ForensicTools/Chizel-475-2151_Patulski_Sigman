@@ -8,7 +8,7 @@ var gulp = require('gulp'),
 var coffeeFile = '*.coffee';
 
 var coffeeSource = 'src/';
-var coffeeDest = 'scripts/';
+var coffeeDest = 'static/scripts/';
 
 var coffeeDir =
     ['browser/',
