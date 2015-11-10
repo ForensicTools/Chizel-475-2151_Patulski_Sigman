@@ -4,51 +4,72 @@
     <meta charset="utf-8">
     <title>Chizel</title>
     <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
-    <srcipts src="lib/jquery/jquery.js"></script>
-    <srcipts src="lib/bootstrap/bootstrap.js"></script>
+    <link rel="stylesheet" href="css/chizel.css">
+
+    <script>window.$ = window.jQuery = require('jquery');</script>
+    <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="./scripts/render/ui-control.js"></script>
+
   </head>
   <body>
-      <div class="container-fluid">
-          <div class="row-fluid">
 
-              <div id="Gutter" class="span3">
-
-                  <div id="SideBar" class="span1">
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <button type="button" class="btn btn-default">
-                                <span class="glypicon glyphicon-hdd"></span>
-                            </button>
-                         </li>
-                        <li class="list-group-item">
-                            <button type="button" class="btn btn-default">
-                                <span class="glypicon glyphicon-registration-mark"></span>
-                            </button>
-                        </li>
-                        <li class="list-group-item">
-                            <button type="button" class="btn btn-default">
-                                <span class="glypicon glyphicon-option-horizontal"></span>
-                            </button>
-                        </li>
-                    </ul>
-                  </div>
-
-              </div>
-              <div id="MainWindow" class="span11">
-                  <div class="jumbotron">
-                      <h1> Hello, Welcome to Chizel!</h1>
-                      <p>...<p>
-                         <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</p>
-                    </div>
-                  <div id="Console" class="span11">
-                      <div id="Banner" clas>
-                          <p>
-                     </div>
-
-                  </div>
-
+      <div class="side-bar">
+            <button id="new_case" onClick="Create_New_Case()" type="button" class="btn"
+            data-toggle="tooltip" title="Create New Case">
+                <text>N</text>
+            </button>
+            <button id="add_evidence" onclick="Add_Evidence()" type="button" class="btn"
+            data-toggle="tooltip" title="Add Evidence" style="display:none;">
+                <text>A</text>
+            </button>
+            <button id="open_case" onclick="Open_Case()" type="button" class="btn"
+            data-toggle="tooltip" title="Open Case" >
+                <text>O</text>
+            </button>
+            <button id="hard_drive" onclick="Analyze_Hard_Drive()" type="button"
+             class="btn" data-toggle="tooltip" title="Analyze Disk Image" style="display:none;">
+                <text>H</text>
+            </button>
+            <button id="ram" onclick="Analyze_RAM()" type="button" class="btn"
+            data-toggle="tooltip" title="Analyse Ram Dump" style="display:none;">
+                <text>R</text>
+            </button>
+            <button id="options" onclick="Options()" type="button" class="btn"
+            data-toggle="tooltip" title="Open Options">
+                <text>*</text>
+            </button>
+      </div>
+      <div class="gutter">
+          <div class="gutter-menu">
+              <div class="btn-group">
+                  <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Select Cloud Service <span class="caret"></span>
+                 </button>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">One Drive</a></li>
+                    <li><a href="#">Google Drive</a></li>
+                    <li><a href="#">DropBox</a></li>
+                  </ul>
               </div>
           </div>
+          <div class="gutter-display">
+
+          </div>
+          <div class="gutter-buttom">
+          </div>
+
+      </div>
+
+      <div class="main-window">
+         <div class="tabs-row">
+
+         </div>
+         <div class="viewer">
+
+         </div>
+         <div class="console">
+
+         </div>
       </div>
   </body>
 <html>
