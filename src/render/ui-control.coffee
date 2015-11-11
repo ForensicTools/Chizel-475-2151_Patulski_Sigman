@@ -3,11 +3,80 @@ ipc = require 'ipc'
 remote = require 'remote'
 dialog = remote.require 'dialog'
 
+
+tree = [
+  {
+    text: "Parent 1",
+    nodes: [
+      {
+        text: "Child 1",
+        nodes: [
+          {
+            text: "Grandchild 1"
+          },
+          {
+            text: "Grandchild 2"
+          }
+        ]
+      },
+      {
+        text: "Child 2"
+      }
+    ]
+  },
+  {
+    text: "Parent 2"
+  },
+  {
+    text: "Parent 3"
+  },
+  {
+    text: "Parent 4"
+  },
+  {
+    text: "Parent 5"
+  },
+  {
+    text: "Parent 1",
+    nodes: [
+      {
+        text: "Child 1",
+        nodes: [
+          {
+            text: "Grandchild 1"
+          },
+          {
+            text: "Grandchild 2"
+          }
+        ]
+      },
+      {
+        text: "Child 2"
+      }
+    ]
+  },
+  {
+    text: "Parent 2"
+  },
+  {
+    text: "Parent 3"
+  },
+  {
+    text: "Parent 4"
+  },
+  {
+    text: "Parent 5"
+  }
+];
+
+
+
 Create_New_Case = () ->
     console.log 'you want to create a new case'
     path = dialog.showOpenDialog({ properties: ['openDirectory']})
     ipc.send 'create-case', path
     ipc.on 'actionReply', ->
+        $('#tree').treeview({data: tree});
         alert 'Case was created. Start chizelin!'
 
 Open_Case = () ->
