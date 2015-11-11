@@ -25,6 +25,10 @@ var bootstrapDest = ['static/lib/bootstrap/css/',
                      'static/lib/bootstrap/fonts/',
                      'static/lib/bootstrap/js/'];
 
+var treeviewSource = ['node_modules/bootstrap-treeview/dist/*'];
+
+var treeviewDest = 'static/lib/bootstrap-treeview/';
+
 var lessSource = 'static/less/*.less';
 var lessDest = 'static/css/';
 
@@ -60,7 +64,10 @@ gulp.task('bootstrapFont', function(){
      gulp.src(bootstrapSource[1]).pipe(gulp.dest(bootstrapDest[1]));
 });
 
-gulp.task('genlib',['jquery', 'bootstrap', 'bootstrapFont']);
+gulp.task('bootstrap-treeview', function(){
+    gulp.src(treeviewSource).pipe(gulp.dest(treeviewDest));
+});
+gulp.task('genlib',['jquery', 'bootstrap', 'bootstrapFont','bootstrap-treeview']);
 
 gulp.task('watch', function(){
     gulp.watch('src/**/*.coffee', ['coffee']);
