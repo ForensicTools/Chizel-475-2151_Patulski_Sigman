@@ -4,70 +4,70 @@ remote = require 'remote'
 dialog = remote.require 'dialog'
 
 
-tree = [
-  {
-    text: "Parent 1",
-    nodes: [
-      {
-        text: "Child 1",
-        nodes: [
-          {
-            text: "Grandchild 1"
-          },
-          {
-            text: "Grandchild 2"
-          }
-        ]
-      },
-      {
-        text: "Child 2"
-      }
-    ]
-  },
-  {
-    text: "Parent 2"
-  },
-  {
-    text: "Parent 3"
-  },
-  {
-    text: "Parent 4"
-  },
-  {
-    text: "Parent 5"
-  },
-  {
-    text: "Parent 1",
-    nodes: [
-      {
-        text: "Child 1",
-        nodes: [
-          {
-            text: "Grandchild 1"
-          },
-          {
-            text: "Grandchild 2"
-          }
-        ]
-      },
-      {
-        text: "Child 2"
-      }
-    ]
-  },
-  {
-    text: "Parent 2"
-  },
-  {
-    text: "Parent 3"
-  },
-  {
-    text: "Parent 4"
-  },
-  {
-    text: "Parent 5"
-  }
-];
+# tree = [
+#   {
+#     text: "Parent 1",
+#     nodes: [
+#       {
+#         text: "Child 1",
+#         nodes: [
+#           {
+#             text: "Grandchild 1"
+#           },
+#           {
+#             text: "Grandchild 2"
+#           }
+#         ]
+#       },
+#       {
+#         text: "Child 2"
+#       }
+#     ]
+#   },
+#   {
+#     text: "Parent 2"
+#   },
+#   {
+#     text: "Parent 3"
+#   },
+#   {
+#     text: "Parent 4"
+#   },
+#   {
+#     text: "Parent 5"
+#   },
+#   {
+#     text: "Parent 1",
+#     nodes: [
+#       {
+#         text: "Child 1",
+#         nodes: [
+#           {
+#             text: "Grandchild 1"
+#           },
+#           {
+#             text: "Grandchild 2"
+#           }
+#         ]
+#       },
+#       {
+#         text: "Child 2"
+#       }
+#     ]
+#   },
+#   {
+#     text: "Parent 2"
+#   },
+#   {
+#     text: "Parent 3"
+#   },
+#   {
+#     text: "Parent 4"
+#   },
+#   {
+#     text: "Parent 5"
+#   }
+# ];
 
 
 
@@ -92,3 +92,12 @@ Analyze_RAM = () ->
 
 Options = () ->
     console.log 'wil open up options when it is implemented'
+
+Analyze_OneDrive = () ->
+    path = dialog.showOpenDialog({ properties: ['openDirectory']})
+    ipc.send 'onedrive', path
+    ipc.on 'actionReply' ,(treeView, err) ->
+        if err
+            $('#tree').append('<span>Could not display tree view!</span>')
+        else
+            $('#tree').treeview({data: treeView})

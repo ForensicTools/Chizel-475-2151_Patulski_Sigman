@@ -3,7 +3,7 @@ ipc = require 'ipc'
 os = require 'os'
 _ = require 'underscore-plus'
 browserWindow = require 'browser-window'
-
+index = require '../backside/filesystem_chizelin'
 
 module.exports =
 class userEvents
@@ -27,3 +27,11 @@ class userEvents
 
         ipc.on 'open-case', (event, data ) ->
             event.sender.sent 'actionReply', 'case is open'
+
+        ipc.on 'onedrive', (event, data) ->
+            chizelFS = new index()
+            results = chizelFS.dirToTreeObj(data, (err, res) ->
+                if(err)
+                    console.log(err) )
+            viewTree = chizelFS.treeObjToView(results)
+            event.sender.sent 'actionReply', viewTree
