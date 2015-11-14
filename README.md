@@ -37,11 +37,15 @@ cloud storage services
 
 ##View of Chizel
 ![Alt text](https://github.com/patulskitime/Chizel-475-2151_Patulski_Sigman/blob/master/Chizel.png)
+###Elements
 *Side Bar: Holds Action Buttons (ex: Create new case, Analyze OneDrive Files)
 *Gutter: Holds tree view of files found
 *Main Window Tab: Holds tabs to other main window displays 
 *Main Window Display: displays information on what was found on the computer.
 *Main Window Console: loges what is happening to the application.
+
+##Example of TreeView 
+![Alt text](https://github.com/patulskitime/Chizel-475-2151_Patulski_Sigman/blob/master/Chizel_ex_TreeView.PNG)
 
 ##The making of Chizel
 Chizel is made using web technologies made possible by
