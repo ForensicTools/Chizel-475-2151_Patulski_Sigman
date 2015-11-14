@@ -34,6 +34,8 @@ Registry - Able to search registry for cloud storage services entries
 * Registry - parse information found and send data to the applications view.
 * RAM - accept ram dumps, analyze, and display info found.
 
+![Alt text](https://github.com/patulskitime/Chizel-475-2151_Patulski_Sigman/blob/master/Chizel.png)
+
 ##The making of Chizel
 Chizel is made using web technologies made possible by
 GitHub's Electron. Electron is a framework that lets you can a Desktop application
