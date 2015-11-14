@@ -1,59 +1,84 @@
+###
+File: filesystem_chizelin.coffee
+Purpose:
+Indexes the file system to find files related to a Cloud Storage Service.
+
+###
 fs = require 'fs'
 path = require 'path'
+fileTree = require 'file-size-tree'
+
 
 module.exports =
 class chizelFS
-    dirToTreeObj: (dir, done) ->
-        results = []
 
-        fs.readdir(dir, (err, list) ->
+    results = []
+    dirList = (_dir) ->
+        try
+            content = fs.readdirSync(_dir)
+            for _path in content
+                _absPath = path.join(_dir,_path)
+                _stat = fs.statSync(_absPath)
+                if _stat && _stat.isFile()
+                    found = _absPath.search(/OneDrive/ig)
+                    if found >= 0
+                        results.push _absPath
+                if _stat && _stat.isDirectory()
+                    dirList( _absPath)
+        catch error
+            #console.error error
 
-            if(err)
-                return done(err)
 
-            pending = list.length
+    dirlist: (dir) ->
+        serviceResults = []
+        console.log 'start search'
+        dirList('C:\\Users')
+        console.log 'end search'
+        console.log fileTree(results)
+        return results
 
-            if(!pending)
-                return done(null, {name: path.basename(dir), type: 'folder', children: results})
-
-            for file in list
-                do (file) ->
-                    file = path.resolve(dir, file)
-                    fs.stat(file, (err, stat) ->
-                        if(stat && stat.isDirectory())
-                            directoryTreeToObj(file, (err, file) ->
-                                str_to_match = file.match(/OneDrive/g)
-                                if str_to_match?
-                                    console.log(file))
-                        else
-                            results.push({type: 'file', name: path.basename(file)})
-                            done(null, results) if(!--pending)))
 
 
     treeObjToView: (results) ->
-        view = null
-        for path in results
-            pathInfo = path.parse(path)
-            pathSplit = path.split(path.sep)
-            if view?
-                view = { text: pathSplit[0], nodes:[]}
-            view =  treeObjToViewHelp(path, view)
+        view = []
+        for _path in results
+            console.log 'hi'
+            pathSplit = _path.split(path.sep)
+            currentNode = view
+            for _subPath in pathSplit
+                console.log 'hello'
+                wantedNode = _subPath
+                lastNode = currentNode
+                for cn in currentNode
+                    console.log 'yoyoyo'
+                    if cn.text is wantedNode
+                        currentNode = cn.nodes
+                        break
+                if lastNode == currentNode
+                    newNode = {text: wantedNode, nodes:[] }
+                    currentNode = newNode.nodes
+        console.log view
         return view
 
 
-    treeObjToViewHelp = (list, node) ->
-        root = list.pop()
-
-        if node.text is root
-            for child in node.nodes
-                if child.text is root
-                    treeObjToViewHelp(list, node)
-            newNode = {text: root, node:[]}
-            node.nodes.push newNode
-        else
-            console.log 'root does not match'
-
-        return node
+    # treeObjToViewHelp = (list, node) ->
+    #
+    #     if list.length =< 0
+    #         return node
+    #
+    #     if !node?
+    #         node = {text: list.shift(), nodes:[]}
+    #         treeObjToViewHelp(list, node)
+    #
+    #     if node?
+    #
+    #         newNode = {text: list.shift() , nodes:[]}
+    #         node.nodes.push newNode
+    #         treeObjToViewHelp(list, node.nodes[0])
+    #     else
+    #         console.log 'root does not match'
+    #
+    #     #return node
 
 
 
@@ -81,29 +106,13 @@ class chizelFS
 #
 #         list.forEach(function(file) {
 #             file = path.resolve(dir, file);
-#             //console.log(file);
 #             fs.stat(file, function(err, stat) {
 #                 if (stat && stat.isDirectory()) {
 #                     diretoryTreeToObj(file, function(err, res) {
-#                         //		console.log(file);
-#
 # 						var str_to_match = file.match(/OneDrive/g);
 #                         if (str_to_match != null){
-#                           // fs.stat(file && function(err, stat) {
-#                           //   if (stat && stat.isDirectory()) {
-#                           //     directoryTreeToObj
-#                           //   }
-#                           // }
 #                           console.log(file)
 #                         }
-#                         // console.log(str_to_match);
-#                         // results.push({
-#                         //     name: path.basename(file),
-#                         //     type: 'folder',
-#                         //     children: res
-#                         // });
-#                         // if (!--pending)
-#                         //     done(null, results);
 #                     });
 #                 }
 #                 else {
