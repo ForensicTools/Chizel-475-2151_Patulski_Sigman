@@ -33,6 +33,8 @@ cloud storage services
 * File System - parse files found and send data to the applications view.
 * Registry - parse information found and send data to the applications view.
 * RAM - accept ram dumps, analyze, and display info found.
+
+
 ##View of Chizel
 ![Alt text](https://github.com/patulskitime/Chizel-475-2151_Patulski_Sigman/blob/master/Chizel.png)
 *Side Bar: Holds Action Buttons (ex: Create new case, Analyze OneDrive Files)
