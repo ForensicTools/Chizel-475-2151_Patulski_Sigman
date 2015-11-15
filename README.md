@@ -29,6 +29,7 @@ Working on packaging Chizel into an exe
 * File System - Able to index file system to find files associated with
 cloud storage services
 * Registry - Able to search registry for cloud storage services entries   
+
 ###TO-DO
 * File System - parse files found and send data to the applications view.
 * Registry - parse information found and send data to the applications view.
@@ -42,7 +43,7 @@ cloud storage services
 * Gutter: Holds tree view of files found
 * Main Window Tab: Holds tabs to other main window displays 
 * Main Window Display: displays information on what was found on the computer.
-* Main Window Console: loges what is happening to the application.
+* Main Window Console: logs what is happening to the application.
 
 ##Example of TreeView 
 ![Alt text](https://github.com/patulskitime/Chizel-475-2151_Patulski_Sigman/blob/master/Chizel_ex_TreeView.PNG)
