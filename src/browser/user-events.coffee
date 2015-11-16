@@ -1,3 +1,12 @@
+###
+File: user-events.coffee
+
+Purpose:
+Recives events from the render process and delagates to other classes.
+Handles user events on the main/browser process side.
+Sends data to be view to the render process.
+###
+
 app = require 'app'
 ipc = require 'ipc'
 os = require 'os'
@@ -28,10 +37,9 @@ class userEvents
         ipc.on 'open-case', (event, data ) ->
             event.sender.sent 'actionReply', 'case is open'
 
-        ipc.on 'onedrive', (event, data) ->
+        ipc.on 'one-drive', (event, data) ->
             chizelFS = new index()
-            results = chizelFS.dirToTreeObj(data, (err, res) ->
-                if(err)
-                    console.log(err) )
-            viewTree = chizelFS.treeObjToView(results)
-            event.sender.sent 'actionReply', viewTree
+            #chizelFS.dirlist(data)
+            #viewTree = chizelFS.treeObjToView(chizelFS.dirlist(data))
+            #console.log viewTree
+            #event.sender.sent 'actionReply', viewTree
