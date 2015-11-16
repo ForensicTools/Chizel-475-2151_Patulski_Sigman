@@ -24,11 +24,12 @@ Working on packaging Chizel into an exe
 
 ##Progress
 ###TO-DONE
-*UI is laid out
-*Basic structure of app is designed
-*File System - Able to index file system to find files associated with
+* UI is laid out
+* Basic structure of app is designed
+* File System - Able to index file system to find files associated with
 cloud storage services
-*Registry - Able to search registry for cloud storage services entries   
+* Registry - Able to search registry for cloud storage services entries   
+
 ###TO-DO
 * File System - parse files found and send data to the applications view.
 * Registry - parse information found and send data to the applications view.
@@ -37,11 +38,15 @@ cloud storage services
 
 ##View of Chizel
 ![Alt text](https://github.com/patulskitime/Chizel-475-2151_Patulski_Sigman/blob/master/Chizel.png)
-*Side Bar: Holds Action Buttons (ex: Create new case, Analyze OneDrive Files)
-*Gutter: Holds tree view of files found
-*Main Window Tab: Holds tabs to other main window displays 
-*Main Window Display: displays information on what was found on the computer.
-*Main Window Console: loges what is happening to the application.
+###Elements
+* Side Bar: Holds Action Buttons (ex: Create new case, Analyze OneDrive Files)
+* Gutter: Holds tree view of files found
+* Main Window Tab: Holds tabs to other main window displays 
+* Main Window Display: displays information on what was found on the computer.
+* Main Window Console: logs what is happening to the application.
+
+##Example of TreeView 
+![Alt text](https://github.com/patulskitime/Chizel-475-2151_Patulski_Sigman/blob/master/Chizel_ex_TreeView.PNG)
 
 ##The making of Chizel
 Chizel is made using web technologies made possible by
@@ -49,8 +54,8 @@ GitHub's Electron. Electron is a framework that lets you can a Desktop applicati
 using web technologies (Javascript, html, css).
 
 ##Resources and links
-electron.atom.io -Electron's office home
-Nodejs.org -javascript runtime used by electron
+<http://electron.atom.io> -Electron's home site
+<http://Nodejs.org> -javascript runtime used by electron
 
 ##CONTACT
 Rich Patulski rwp7402@rit.edu
