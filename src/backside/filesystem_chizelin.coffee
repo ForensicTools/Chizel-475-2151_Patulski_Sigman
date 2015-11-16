@@ -13,6 +13,7 @@ module.exports =
 class chizelFS
 
     results = []
+    tree = {}
     dirList = (_dir) ->
         try
             content = fs.readdirSync(_dir)
