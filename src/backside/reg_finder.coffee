@@ -1,15 +1,14 @@
 `
 
-var Onedrive_keys = ['\\Software\\Microsoft\\Windows\\CurrentVersion\\Run']
-var key_array_length = Onedrive_keys.length;
+var Onedrive_key = ['\\Software\\Microsoft\\OneDrive']
+var key_array_length = Onedrive_key.length;
 for (var i= 0; i < key_array_length; i++)  {
     var Winreg = require('winreg')
     ,   regKey = new Winreg({
-          hive: Winreg.HKCU,                                          // HKEY_CURRENT_USER
-          key:  '\\Software\\Microsoft\\OneDrive' // key containing autostart programs
+          hive: Winreg.HKCU,                                // HKEY_CURRENT_USER
+          key:  '\\Software\\Microsoft\\OneDrive' // key containing Onedrive
         })
 
-    // list autostart programs
     regKey.values(function (err, items) {
       if (err)
         console.log('ERROR: '+err);
