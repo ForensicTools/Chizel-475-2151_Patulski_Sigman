@@ -35,11 +35,10 @@ class userEvents
             event.sender.send 'actionReply', 'yo get chizelin!!!'
 
         ipc.on 'open-case', (event, data ) ->
-            event.sender.sent 'actionReply', 'case is open'
+            event.sender.send 'actionReply', 'case is open'
 
         ipc.on 'one-drive', (event, data) ->
             chizelFS = new index()
-            #chizelFS.dirlist(data)
-            #viewTree = chizelFS.treeObjToView(chizelFS.dirlist(data))
-            #console.log viewTree
-            #event.sender.sent 'actionReply', viewTree
+            viewTree = chizelFS.dirlist(data)
+            #console.log viewTree    
+            event.sender.send 'actionReply', viewTree

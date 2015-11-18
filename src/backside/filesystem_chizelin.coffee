@@ -6,14 +6,51 @@ Indexes the file system to find files related to a Cloud Storage Service.
 ###
 fs = require 'fs'
 path = require 'path'
-fileTree = require 'file-size-tree'
+
+
+
+class Tree
+
+    constructor:  (text) ->
+        @text = text
+        @nodes = []
+
+    buildTree: (list) ->
+        console.log list
+        if list.length <= 0
+            console.log '0'
+            return this
+
+        if !this.text?
+            console.log '1'
+            this.text = list.shift()
+            this.buildTree(list)
+
+        else
+            console.log '2'
+            root = list[0]
+
+            if this.text is root
+                console.log '3'
+                list.shift()
+                this.buildTree(list)
+            else
+                console.log '4'
+                for subNode in this.nodes
+                    if subNode.text is root
+                        return subNode.buildTree(list)
+                newNode  = new Tree (list.shift())
+                newNode.buildTree(list)
+                this.nodes.push newNode
 
 
 module.exports =
 class chizelFS
 
     results = []
-    tree = {}
+
+
+
     dirList = (_dir) ->
         try
             content = fs.readdirSync(_dir)
@@ -32,54 +69,27 @@ class chizelFS
 
     dirlist: (dir) ->
         serviceResults = []
-        console.log 'start search'
+        #console.log 'start search'
         dirList('C:\\Users')
-        console.log 'end search'
-        console.log fileTree(results)
-        return results
-
-
-
-    treeObjToView: (results) ->
-        view = []
+        #console.log 'end search'
+        tree =  new Tree(null)
+        #console.log tree
+        #console.log 'began the tree asm'
+        #list =  ["hfjkdfhfgj", "hkdjshf", "gjjksodfj"]
         for _path in results
-            console.log 'hi'
-            pathSplit = _path.split(path.sep)
-            currentNode = view
-            for _subPath in pathSplit
-                console.log 'hello'
-                wantedNode = _subPath
-                lastNode = currentNode
-                for cn in currentNode
-                    console.log 'yoyoyo'
-                    if cn.text is wantedNode
-                        currentNode = cn.nodes
-                        break
-                if lastNode == currentNode
-                    newNode = {text: wantedNode, nodes:[] }
-                    currentNode = newNode.nodes
-        console.log view
-        return view
+        #console.log 'first'
+            tree.buildTree(_path.split(path.sep))
+        #console.log 'second'
+        #tree.buildTree(results[1].split(path.sep))
+        #console.log 'done'
+        #console.log 'done asm the tree'
+        return tree
 
 
-    # treeObjToViewHelp = (list, node) ->
-    #
-    #     if list.length =< 0
-    #         return node
-    #
-    #     if !node?
-    #         node = {text: list.shift(), nodes:[]}
-    #         treeObjToViewHelp(list, node)
-    #
-    #     if node?
-    #
-    #         newNode = {text: list.shift() , nodes:[]}
-    #         node.nodes.push newNode
-    #         treeObjToViewHelp(list, node.nodes[0])
-    #     else
-    #         console.log 'root does not match'
-    #
-    #     #return node
+    listToTree = (list, node) ->
+
+
+        #return node
 
 
 
