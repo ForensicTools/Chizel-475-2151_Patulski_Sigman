@@ -1,17 +1,19 @@
-app = require 'app'
-url = require 'url'
-menu = require 'menu'
 path = require 'path'
 fs = require 'fs'
-ipc = require 'ipc'
+url = require 'url'
 os = require 'os'
-Menu = require 'menu'
-MenuItem = require 'menu-item'
 _ = require 'underscore-plus'
-crashReport = require 'crash-reporter'
 eventEmitter = require 'events'
-browserWindow = require 'browser-window'
 ChizelApplication = require './chizel-application'
+
+electron = require 'electron'
+app = electron.app
+menu = electron.menu
+ipcMain = electron.ipcMain
+menuItem = electron.MenuItem
+crashReport = electron.crashReporter
+browserWindow = electron.BrowserWindow
+
 
 start = ->
 

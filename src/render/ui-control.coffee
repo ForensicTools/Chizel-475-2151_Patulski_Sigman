@@ -9,8 +9,9 @@ displays in it in the DOM.
 
 ###
 $ = require 'jquery'
-ipc = require 'ipc'
-remote = require 'remote'
+electron = require 'electron'
+ipcRenderer = electron.ipcRenderer
+remote = electron.remote
 dialog = remote.require 'dialog'
 
 ###
@@ -83,8 +84,8 @@ tree = [
 Create_New_Case = () ->
     console.log 'you want to create a new case'
     path = dialog.showOpenDialog({ properties: ['openDirectory']})
-    ipc.send 'create-case', path
-    ipc.on 'actionReply', ->
+    ipcRenderer.send 'create-case', path
+    ipcRenderer.on 'actionReply', ->
         alert 'Case was created. Start chizelin!'
 
 Open_Case = () ->
@@ -92,8 +93,8 @@ Open_Case = () ->
 
 Analyze_Hard_Drive = () ->
     console.log 'you clicked the hard button'
-    ipc.send 'hard_analyse' , 'someData'
-    ipc.on 'actionReply', (reply) ->
+    ipcRenderer.send 'hard_analyse' , 'someData'
+    ipcRenderer.on 'actionReply', (reply) ->
         console.log reply
 
 Analyze_RAM = () ->
@@ -105,9 +106,9 @@ Options = () ->
 Analyze_OneDrive = () ->
     console.log 'analying one drive'
     path = dialog.showOpenDialog({ properties: ['openDirectory']})
-    ipc.send 'one-drive', path[0]
-    ipc.on 'actionReply' , (treeView ) ->
+    ipcRenderer.send 'one-drive', path[0]
+    ipcRenderer.on 'actionReply' , (event, treeView ) ->
             console.log treeView
             treelist = []
             treelist.push treeView
-            $('#tree').treeview({data: treelist})
+            #$('#tree').treeview({data: treelist})

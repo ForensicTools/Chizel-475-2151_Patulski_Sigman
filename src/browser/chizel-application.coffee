@@ -1,11 +1,13 @@
-app = require 'app'
 path = require 'path'
-ipc = require 'ipc'
 os = require 'os'
-_ = require 'underscore-plus'
 eventEmitter = require 'events'
 ChizelWindow = require './chizel-window'
 userEventHandler =  require './user-events'
+_ = require 'underscore-plus'
+electron = require 'electron'
+ipcMain = electron.ipcMain
+app = electron.app
+
 
 
 module.exports =

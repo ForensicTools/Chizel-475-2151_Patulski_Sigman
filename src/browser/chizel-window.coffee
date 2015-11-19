@@ -1,11 +1,14 @@
-app = require 'app'
 path = require 'path'
-BrowserWindow = require 'browser-window'
-dialog = require 'dialog'
 fs = require 'fs'
 url = require 'url'
 _ = require 'underscore-plus'
 eventEmitter = require 'events'
+
+electron = require 'electron'
+browserWindow = electron.BrowserWindow
+app = electron.app
+dialog = electron.dialog
+
 
 
 module.exports =
@@ -19,9 +22,9 @@ class ChizelWindow
 
         #global.ChizelApplication.addWindow(this)
 
-        @mainWindow = new BrowserWindow options
+        @mainWindow = new browserWindow options
         @mainWindow.openDevTools()
-        @mainWindow.loadUrl url.format
+        @mainWindow.loadURL url.format
             protocol: 'file'
             pathname:  process.cwd() + "/static/index.html"
             slashs:true

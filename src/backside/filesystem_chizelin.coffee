@@ -8,60 +8,79 @@ fs = require 'fs'
 path = require 'path'
 
 
-
 class Tree
 
-    constructor:  (text) ->
-        @text = text
-        @nodes = []
+    text: null
+    dataPath: ''
+    nodes: []
+    isFile: true
+    size: 0
 
+    constructor:  (text) ->
+        if text
+            @text = text
+
+    ###
+    function: buildTree
+    args: array of broken up file path. Ex: ['C:\\','path','to','file.txt']
+    op: adds list to tree object
+    ###
     buildTree: (list) ->
         if list.length <= 0
             return this
 
-        if !this.text?
-            this.text = list.shift()
-            this.buildTree(list)
+        if !@text?
+            @text = list.shift()
+            @dataPath.concat( path.sep + @text)
+            @buildTree(list)
 
         else
             root = list[0]
 
-            if this.text is root
+            if @text is root
                 list.shift()
-                this.buildTree(list)
+                @buildTree(list)
             else
-                for subNode in this.nodes
+                for subNode in @nodes
                     if subNode.text is root
                         return subNode.buildTree(list)
-                newNode  = new Tree (list.shift())
-                newNode.buildTree(list)
-                this.nodes.push newNode
 
-    decorateTree: (_path) ->
+
+                newNode  = new Tree ( list.shift() )
+
+                newNode.dataPath.concat( @nodes.dataPath  + path.sep + newNode.text)
+                newNode.buildTree(list)
+
+                @nodes.push newNode
+                @isFile = false
+                @size =  @size + 1
+
 
 module.exports =
-    class FileSys
+class FileSys
 
-        constructor: (keywords) ->
-            @tree = new Tree(null)
-            @keywords = keywords
-            @files =  []
-            @places = []
+    constructor: (keywords) ->
+        @tree = new Tree()
+        @files = []
+        @keywords = keywords
 
-        searchFS: (_dir) ->
-            fs.readdir(_dir, (err, files) ->
-                for _path in files
-                    _absPath = path.join(_dir, _path)
-                    fs.stat(_absPath, (err, _stats ) ->
-                        if (err)
-                            console.log err
-                        else
-                            if _stats && _stats.isFile()
-                                for _keywords in this.keywords
-                                    found = _absPath.search(new RegExp(_keywords, 'g,','i'))
-                                    if found >= 0
-                                        this.results.push _absPath
-                            if _stats && _stats.isDirectory()
-                                searchFS(_absPath)
+    createTree: () ->
+        for _path in @files
+            @tree.buildTree(_path.split(path.sep))
 
-                        ))
+    searchFS: (_dir) ->
+        try
+            contents = fs.readdirSync(_dir)
+
+            for _path in contents
+                _absPath = path.join(_dir, _path)
+                _stats = fs.statSync(_absPath)
+                if _stats && _stats.isFile()
+                    found = _absPath.search( new RegExp(@keywords, 'g','i') )
+                    if found >= 0
+                        #@tree.buildTree(_absPath.split(path.sep))
+                        @files.push _absPath
+                if _stats && _stats.isDirectory()
+                    @searchFS(_absPath)
+
+        catch error
