@@ -4,50 +4,43 @@
     <meta charset="utf-8">
     <title>Chizel</title>
     <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="css/chrome-tabs.css">
     <link rel="stylesheet" href="css/chizel.css">
-
-    <script>window.$ = window.jQuery = require('jquery');</script>
-    <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
-    <script src="./scripts/render/ui-control.js"></script>
-    <script src="./lib/bootstrap-treeview/bootstrap-treeview.min.js"></script>
   </head>
+
   <body>
 
       <div class="side-bar">
             <button id="new_case" onClick="Create_New_Case()" type="button" class="btn"
             data-toggle="tooltip" title="Create New Case">
-                <text>N</text>
+                <text>New Case</text>
             </button>
             <button id="add_evidence" onclick="Add_Evidence()" type="button" class="btn"
             data-toggle="tooltip" title="Add Evidence" style="display:none;">
-                <text>A</text>
+                <text>Add Evidence</text>
             </button>
             <button id="open_case" onclick="Open_Case()" type="button" class="btn"
             data-toggle="tooltip" title="Open Case" >
-                <text>O</text>
-            </button>
-            <button id="hard_drive" onclick="Analyze_Hard_Drive()" type="button"
-             class="btn" data-toggle="tooltip" title="Analyze Disk Image" style="display:none;">
-                <text>H</text>
-            </button>
-            <button id="ram" onclick="Analyze_RAM()" type="button" class="btn"
-            data-toggle="tooltip" title="Analyse Ram Dump" style="display:none;">
-                <text>R</text>
+                <text>Open Case</text>
             </button>
             <button id="onedrive" onclick="Analyze_OneDrive()" type="button" class="btn"
             data-toggle="tooltip" title="Analyze OneDrive">
-                <text>OD</text>
+                <text>OneDrive</text>
             </button>
-            <button id="options" onclick="Options()" type="button" class="btn"
-            data-toggle="tooltip" title="Open Options">
-                <text>*</text>
+            <button id="googledrive" onclick="Analyze_GoogleDrive()" type="button" class="btn"
+            data-toggle="tooltip" title="Analyze Google Drive">
+                <text>Google Drive</text>
+            </button>
+            <button id="Dropbox" onclick="Analyze_Dropbox()" type="button" class="btn"
+            data-toggle="tooltip" title="Analyse Dropbox">
+                <text>Dropbox</text>
             </button>
       </div>
       <div class="gutter">
           <div class="gutter-menu">
               <div class="btn-group">
                   <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Select Cloud Service <span class="caret"></span>
+                     Case Details<span class="caret"></span>
                  </button>
                   <ul class="dropdown-menu">
                     <li><a id="one_drive" href="#">One Drive</a></li>
@@ -66,16 +59,32 @@
 
       </div>
 
-      <div class="main-window">
-         <div class="tabs-row">
+     <div class="main-window">
+        <div class="tabs-row">
+            <div class="chrome-tabs-shell">
+               <div class="chrome-tabs">
 
-         </div>
-         <div class="viewer">
+               </div>
+            <div class="chrome-shell-bottom-bar"></div>
+        </div>
+       </div>
+       <div class="viewer">
+           <div class="basic-info">
 
-         </div>
-         <div class="console">
+           </div>
 
-         </div>
+       </div>
+      <div class="console">
+
+
       </div>
+    </div>
+
+    <script>window.$ = window.jQuery = require('jquery');</script>
+    <script src="./jquery-ui-1.11.4/jquery-ui.min.js"></script>
+    <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="./lib/bootstrap-treeview/bootstrap-treeview.min.js"></script>
+    <script src="./scripts/render/chrome-tabs.js"></script>
+    <script src="./scripts/render/ui-control.js"></script>
   </body>
 <html>
