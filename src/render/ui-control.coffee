@@ -20,7 +20,7 @@ $shell_tabs =  $('.chrome-tabs-shell')
 # window first pops up
 initDisplay = () ->
     chromeTabs.init({$shell: $shell_tabs, minWidth: 45, maxWidth: 160})
-    chromeTabs.addNewTab()
+    chromeTabs.addNewTab($shell_tabs, {title:"Welcome"})
 
 Create_New_Case = () ->
     console.log 'you want to create a new case'
@@ -48,7 +48,7 @@ Analyse_Dropbox = () ->
 
 Analyze_OneDrive = () ->
     console.log 'analying one drive'
-    chromeTabs.addNewTab({title:"OneDrive",  })
+    #chromeTabs.addNewTab({title:"OneDrive",  })
     ipcRenderer.send 'one-drive', ''
     ipcRenderer.on 'actionReply' , (event, treeView ) ->
             console.log treeView

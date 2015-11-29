@@ -138,7 +138,7 @@ chromeTabs =
             $tab = $ (@)
             zIndex = $tabs.length - i
             zIndex = $tabs.length + 40 if $tab.hasClass('chrome-tab-current')
-            $tab.css({zIndex: zIndex})
+            $tab.css zIndex: zIndex
             $tab['zIndex'] = zIndex
 
     setupEvents: ($shell) ->
@@ -178,9 +178,8 @@ chromeTabs =
         chromeTabs.render $shell
 
     getCurrentTab:($shell) ->
-        $shell.find('.chrome-tab-current')
-
-
+        $shell.find('.chrome-tab-current ')
+        
     updateTab: ($shell, $tab, tabData) ->
         $tab.find('.chrome-tab-title').html tabData.title
         #$tab.find('.chrome-tab-favicon').css backgroundImage: "url('#{tabData.favicon}')"
