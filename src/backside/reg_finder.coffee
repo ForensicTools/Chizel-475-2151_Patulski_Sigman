@@ -1,5 +1,9 @@
-`
 
+ChildProcess =  require 'child_process'
+
+
+
+`
 var Onedrive_key = ['\\Software\\Microsoft\\OneDrive']
 var key_array_length = Onedrive_key.length;
 for (var i= 0; i < key_array_length; i++)  {
