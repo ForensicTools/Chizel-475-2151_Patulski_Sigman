@@ -10,6 +10,7 @@ os = require 'os'
 _ = require 'underscore-plus'
 Filesys = require '../backside/filesystem_chizelin'
 electron = require 'electron'
+graph = require '../backside/updates_graph'
 app = electron.app
 ipcMain = electron.ipcMain
 
@@ -34,5 +35,6 @@ class userEvents
             onedriveFS = new Filesys('OneDrive')
 
             onedriveFS.searchFS('C:\\Users')
+            graph(onedriveFS)
             #console.log onedriveFS.tree
             event.sender.send 'actionReply', onedriveFS
