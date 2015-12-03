@@ -10,11 +10,11 @@ path = require 'path'
 
 class Tree
 
-    text: null
-    dataPath: ''
-    nodes: []
-    isFile: true
-    size: 0
+    @text: null
+    @dataPath: ''
+    @nodes: []
+    @isFile: true
+    @size: 0
 
     constructor:  (text) ->
         if text
@@ -31,7 +31,7 @@ class Tree
 
         if !@text?
             @text = list.shift()
-            @dataPath.concat( path.sep + @text)
+            @dataPath = @text
             @buildTree(list)
 
         else
@@ -48,7 +48,7 @@ class Tree
 
                 newNode  = new Tree ( list.shift() )
 
-                newNode.dataPath.concat( @nodes.dataPath  + path.sep + newNode.text)
+                newNode.dataPath =  @dataPath  + path.sep + path.sep + newNode.text
                 newNode.buildTree(list)
 
                 @nodes.push newNode
