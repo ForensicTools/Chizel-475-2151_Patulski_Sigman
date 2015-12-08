@@ -15,6 +15,7 @@ module.exports =
       date_regex = /[0-9]{4}-[0-9]+-[0-9]+/g
       matches = []
       date_array = []
+      dict = {}
       i = 0
       j = 0
       all_files = FileSys.files
@@ -31,7 +32,17 @@ module.exports =
         i++
       while j < date_array.length
         if date_array[j] != null
-          console.log(date_array[j])
-      # console.log(sync_date)
-      # console.log(matches[i])
+          date = date_array[j][0]
+          #console.log(date)
+          split_date = date.split "-"
+          month = split_date[1]
+          #console.log(month)
+        #console.log(dict[month])
+
+          if !dict[month] 
+            dict[month] = 1
+            console.log(dict[month])
+          else
+            dict[month]+=1
         j++
+      console.log(dict)
