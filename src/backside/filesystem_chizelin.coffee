@@ -10,7 +10,15 @@ path = require 'path'
 
 class Tree
 
+<<<<<<< HEAD
+    @text: null
+    @dataPath: ''
+    @nodes: []
+    @isFile: true
+    @size: 0
+=======
 
+>>>>>>> 2d2d66365df1a48ee6d7b7eb0c95d9abad828a12
 
     constructor:  (text) ->
         @text = null
