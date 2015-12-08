@@ -8,78 +8,19 @@ users commands. Recvices data back from main/browser process and
 displays in it in the DOM.
 
 ###
-$ = require 'jquery'
+#$ = require 'jquery'
 electron = require 'electron'
 ipcRenderer = electron.ipcRenderer
 remote = electron.remote
 dialog = remote.require 'dialog'
 
-###
-tree = [
-  {
-    text: "Parent 1",
-    nodes: [
-      {
-        text: "Child 1",
-        nodes: [
-          {
-            text: "Grandchild 1"
-          },
-          {
-            text: "Grandchild 2"
-          }
-        ]
-      },
-      {
-        text: "Child 2"
-      }
-    ]
-  },
-  {
-    text: "Parent 2"
-  },
-  {
-    text: "Parent 3"
-  },
-  {
-    text: "Parent 4"
-  },
-  {
-    text: "Parent 5"
-  },
-  {
-    text: "Parent 1",
-    nodes: [
-      {
-        text: "Child 1",
-        nodes: [
-          {
-            text: "Grandchild 1"
-          },
-          {
-            text: "Grandchild 2"
-          }
-        ]
-      },
-      {
-        text: "Child 2"
-      }
-    ]
-  },
-  {
-    text: "Parent 2"
-  },
-  {
-    text: "Parent 3"
-  },
-  {
-    text: "Parent 4"
-  },
-  {
-    text: "Parent 5"
-  }
-];
-###
+$shell_tabs =  $('.chrome-tabs-shell')
+
+
+# window first pops up
+initDisplay = () ->
+    chromeTabs.init({$shell: $shell_tabs, minWidth: 45, maxWidth: 160})
+    chromeTabs.addNewTab($shell_tabs, {title:"Welcome"})
 
 Create_New_Case = () ->
     console.log 'you want to create a new case'
@@ -91,24 +32,30 @@ Create_New_Case = () ->
 Open_Case = () ->
     console.log 'you want to open a new case'
 
-Analyze_Hard_Drive = () ->
-    console.log 'you clicked the hard button'
-    ipcRenderer.send 'hard_analyse' , 'someData'
-    ipcRenderer.on 'actionReply', (reply) ->
-        console.log reply
 
-Analyze_RAM = () ->
-    console.log 'you clicked the ram button'
+Analyze_GoogleDrive = () ->
+    console.log 'analting google drive'
+    ipcRenderer.send 'google-drive', ''
 
-Options = () ->
-    console.log 'wil open up options when it is implemented'
+    ipcRenderer.on 'actionReply', (event, treeView) ->
+        console.log treeView
+Analyse_Dropbox = () ->
+    consle.log 'anazing dropbox'
+    ipcRenderer.send 'dropbox', ''
+
+    ipcRenderer.on 'actionReply', (event, treeView) ->
+        console.log treeView
 
 Analyze_OneDrive = () ->
     console.log 'analying one drive'
-    path = dialog.showOpenDialog({ properties: ['openDirectory']})
-    ipcRenderer.send 'one-drive', path[0]
+    #chromeTabs.addNewTab({title:"OneDrive",  })
+    ipcRenderer.send 'one-drive', ''
     ipcRenderer.on 'actionReply' , (event, treeView ) ->
             console.log treeView
             treelist = []
-            treelist.push treeView
-            #$('#tree').treeview({data: treelist})
+            treelist.push treeView.tree
+            $('#tree').treeview({data: treelist})
+
+
+
+initDisplay()

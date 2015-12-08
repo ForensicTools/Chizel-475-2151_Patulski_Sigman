@@ -1,5 +1,6 @@
 $ = require 'jquery'
 
+
 module.exports =
 class MainWindow
 

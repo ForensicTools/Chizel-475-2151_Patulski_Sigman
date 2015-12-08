@@ -14,7 +14,10 @@ module.exports =
 class ChizelApplication
     _.extend @prototype, eventEmitter.prototype
 
+    #Application State
     ChizelWindow: null
+    CaseLoaded: false
+    CasePath: ''
 
 
     @open: (options) ->

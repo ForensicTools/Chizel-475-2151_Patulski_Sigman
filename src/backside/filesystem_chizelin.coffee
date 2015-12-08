@@ -10,13 +10,22 @@ path = require 'path'
 
 class Tree
 
+<<<<<<< HEAD
     @text: null
     @dataPath: ''
     @nodes: []
     @isFile: true
     @size: 0
+=======
+
+>>>>>>> 2d2d66365df1a48ee6d7b7eb0c95d9abad828a12
 
     constructor:  (text) ->
+        @text = null
+        @dataPath = ''
+        @nodes = []
+        @isFile = true
+        @size = 0
         if text
             @text = text
 
@@ -59,14 +68,12 @@ class Tree
 module.exports =
 class FileSys
 
+
     constructor: (keywords) ->
+        @keywords = keywords
         @tree = new Tree()
         @files = []
-        @keywords = keywords
 
-    createTree: () ->
-        for _path in @files
-            @tree.buildTree(_path.split(path.sep))
 
     searchFS: (_dir) ->
         try
@@ -78,7 +85,7 @@ class FileSys
                 if _stats && _stats.isFile()
                     found = _absPath.search( new RegExp(@keywords, 'g','i') )
                     if found >= 0
-                        #@tree.buildTree(_absPath.split(path.sep))
+                        @tree.buildTree(_absPath.split(path.sep))
                         @files.push _absPath
                 if _stats && _stats.isDirectory()
                     @searchFS(_absPath)

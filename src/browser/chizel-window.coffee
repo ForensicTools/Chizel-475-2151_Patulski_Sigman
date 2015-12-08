@@ -39,7 +39,7 @@ class ChizelWindow
 
         @mainWindow.on 'close', -> #when window is going to close
         @mainWindow.on 'closed', ->  #the window is close deference the window object
-            global.ChizelApplication.removeWindow()
+            #global.ChizelApplication.removeWindow()
         @mainWindow.on 'unresponsive', => # web page become what it says
 
         @mainWindow.on 'responsive', -> # web page is responsive from being unresponsive

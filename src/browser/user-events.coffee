@@ -10,6 +10,7 @@ os = require 'os'
 _ = require 'underscore-plus'
 Filesys = require '../backside/filesystem_chizelin'
 electron = require 'electron'
+graph = require '../backside/updates_graph'
 app = electron.app
 ipcMain = electron.ipcMain
 
@@ -20,12 +21,6 @@ class userEvents
         @userRequests()
 
     userRequests: () ->
-        ipcMain.on 'analyse-hd', (event, data) ->
-            event.sender.send('actionReply', 'yo whats up')
-
-        ipcMain.on 'analyse-ram',(event,data) ->
-            event.sender.send
-
         ipcMain.on 'add-evidence', (event,data) ->
             event.sender.send
 
@@ -40,6 +35,6 @@ class userEvents
             onedriveFS = new Filesys('OneDrive')
 
             onedriveFS.searchFS('C:\\Users')
-            onedriveFS.createTree()
+            graph(onedriveFS)
             #console.log onedriveFS.tree
             event.sender.send 'actionReply', onedriveFS

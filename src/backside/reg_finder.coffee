@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 winReg = require 'winreg'
 
 OneDrive_Keys = ['\\Software\\Microsoft\\OneDrive']
@@ -22,6 +23,12 @@ class Registry
 
     constructor: () ->
         
+=======
+
+ChildProcess =  require 'child_process'
+
+
+>>>>>>> 2d2d66365df1a48ee6d7b7eb0c95d9abad828a12
 
 `
 var Onedrive_key = ['\\Software\\Microsoft\\OneDrive']
