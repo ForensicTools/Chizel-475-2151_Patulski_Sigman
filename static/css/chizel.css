@@ -21,7 +21,7 @@ div.side-bar button.btn {
   height: 75px;
   margin: 10px;
   position: relative;
-  font-size: 50px;
+  font-size: 12px;
   font-family: sans-serif;
 }
 div.gutter {
@@ -103,7 +103,7 @@ div.main-window div.tabs-row {
   z-index: 3;
   top: 0px;
   width: 100%;
-  height: 50px;
+  height: 35px;
   border: 1px solid black;
   border-bottom-style: solid;
   border-right-style: none;
@@ -112,7 +112,7 @@ div.main-window div.tabs-row {
 }
 div.main-window div.viewer {
   z-index: 2;
-  padding-top: 50px;
+  padding-top: 35px;
   padding-bottom: 100px;
   width: 100%;
   height: 100%;
@@ -127,7 +127,7 @@ div.main-window div.console {
   position: fixed;
   bottom: 0px;
   width: 100%;
-  height: 100px;
+  height: 75px;
   border: 1px solid black;
   border-bottom-style: none;
   border-right-style: none;
