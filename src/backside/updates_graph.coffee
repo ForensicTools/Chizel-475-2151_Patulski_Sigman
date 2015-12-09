@@ -39,7 +39,7 @@ module.exports =
           #console.log(month)
         #console.log(dict[month])
 
-          if !dict[month] 
+          if !dict[month]
             dict[month] = 1
             console.log(dict[month])
           else
