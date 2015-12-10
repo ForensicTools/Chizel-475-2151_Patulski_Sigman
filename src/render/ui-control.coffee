@@ -13,13 +13,38 @@ electron = require 'electron'
 ipcRenderer = electron.ipcRenderer
 remote = electron.remote
 dialog = remote.require 'dialog'
+events =  require 'events'
+path = require 'path'
+fs =  require 'fs'
+
+BaseDir =  path.resolve(__dirname)
 
 $shell_tabs =  $('.chrome-tabs-shell')
 
 
+
+tabsEmitter =  new events.EventEmitter()
+
+
+tabListener = () ->
+    tabsEmitter.on 'tab-click', (data) ->
+        console.log data
+
+    tabsEmitter.on 'tab-close', (data) ->
+        console.log data
+
 # window first pops up
 initDisplay = () ->
-    chromeTabs.init({$shell: $shell_tabs, minWidth: 45, maxWidth: 160})
+    chromeTabs.init({$shell: $shell_tabs, tabEmitter: tabsEmitter, minWidth: 45, maxWidth: 160})
+
+    fs.readFile(BaseDir + '\\tabs\\welcome.html',{encoding:'utf-8'},(error, data) ->
+            if error
+                $('div.viewer').html(error)
+            else
+                $('div.viewer').html(data)
+
+         )
+
     chromeTabs.addNewTab($shell_tabs, {title:"Welcome"})
 
 Create_New_Case = () ->
@@ -39,12 +64,20 @@ Analyze_GoogleDrive = () ->
 
     ipcRenderer.on 'actionReply', (event, treeView) ->
         console.log treeView
+        treelist = []
+        treelist.push treeView.tree
+        $('#tree').treeview({data: treelist})
+
+
 Analyse_Dropbox = () ->
-    consle.log 'anazing dropbox'
+    console.log 'anazing dropbox'
     ipcRenderer.send 'dropbox', ''
 
     ipcRenderer.on 'actionReply', (event, treeView) ->
         console.log treeView
+        treelist = []
+        treelist.push treeView.tree
+        $('#tree').treeview({data: treelist})
 
 Analyze_OneDrive = () ->
     console.log 'analying one drive'
@@ -59,3 +92,4 @@ Analyze_OneDrive = () ->
 
 
 initDisplay()
+tabListener()
