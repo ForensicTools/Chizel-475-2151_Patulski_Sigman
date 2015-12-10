@@ -17,16 +17,16 @@ browserWindow = electron.BrowserWindow
 
 start = ->
 
-    setUpCrashReporter()
+    # setUpCrashReporter()
 
     app.on 'ready', ->
 
 
         ChizelApplication.open(path.resolve(__dirname,'..','..','..'))
 
-
-setUpCrashReporter = ->
-    crashReport.start()
+#
+# setUpCrashReporter = ->
+#     crashReport.start()
 
 
 
