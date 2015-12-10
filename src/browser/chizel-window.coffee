@@ -18,15 +18,15 @@ class ChizelWindow
     mainWindow:null
     loaded:null
 
-    constructor:(options) ->
+    constructor:(path) ->
 
         #global.ChizelApplication.addWindow(this)
 
-        @mainWindow = new browserWindow options
+        @mainWindow = new browserWindow {}
         @mainWindow.openDevTools()
         @mainWindow.loadURL url.format
             protocol: 'file'
-            pathname:  process.cwd() + "/static/index.html"
+            pathname:  path + "/static/index.html"
             slashs:true
 
 
