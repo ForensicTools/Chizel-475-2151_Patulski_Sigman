@@ -2,7 +2,8 @@ var gulp = require('gulp'),
     gutil = require('gulp-util'),
     coffee = require('gulp-coffee'),
     less = require('gulp-less'),
-    concat = require('gulp-concat');
+    concat = require('gulp-concat'),
+    packager =  require('electron-packager');
 //     electron = require('electron-connect').server.create( //{
 // //   electron: require('electron-prebuilt')
 // // // }
@@ -87,5 +88,17 @@ gulp.task('watch', function(){
 
 });
 
+gulp.task('build', function(){
+    opts = {
+        dir:'.',
+        name:'Chizel',
+        platform:'win32',
+        arch:'x64',
+        version:'0.35.4'
 
+    };
+    packager(opts, function done (err, appPath){
+        
+    });
+});
 gulp.task('default', ['coffee','less','watch']);
