@@ -23,7 +23,7 @@ class ChizelWindow
         #global.ChizelApplication.addWindow(this)
 
         @mainWindow = new browserWindow {}
-        @mainWindow.openDevTools()
+        #@mainWindow.openDevTools()
         @mainWindow.loadURL url.format
             protocol: 'file'
             pathname:  path + "/static/index.html"
