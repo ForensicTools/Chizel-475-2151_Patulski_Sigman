@@ -12,7 +12,7 @@
     <script >var d3 = require("d3") </script>
       <div class="side-bar">
             <button id="new_case" onClick="Create_New_Case()" type="button" class="btn"
-            data-toggle="tooltip" title="Create New Case">
+            data-toggle="tooltip" title="Create New Case" style="display:none;">
                 <text>New Case</text>
             </button>
             <button id="add_evidence" onclick="Add_Evidence()" type="button" class="btn"
@@ -20,7 +20,7 @@
                 <text>Add Evidence</text>
             </button>
             <button id="open_case" onclick="Open_Case()" type="button" class="btn"
-            data-toggle="tooltip" title="Open Case" >
+            data-toggle="tooltip" title="Open Case" style="display:none;">
                 <text>Open Case</text>
             </button>
             <button id="onedrive" onclick="Analyze_OneDrive()" type="button" class="btn"
@@ -37,7 +37,7 @@
             </button>
       </div>
       <div class="gutter">
-          <div class="gutter-menu">
+          <!-- <div class="gutter-menu">
               <div class="btn-group">
                   <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                      Case Details<span class="caret"></span>
@@ -48,14 +48,14 @@
                     <li><a href="#">DropBox</a></li>
                   </ul>
               </div>
-          </div>
+          </div> -->
           <div class="gutter-display">
             <div id="tree">
 
             </div>
           </div>
-          <div class="gutter-buttom">
-          </div>
+          <!-- <div class="gutter-buttom">
+          </div> -->
 
       </div>
 
@@ -71,10 +71,10 @@
        <div class="viewer">
 
        </div>
-      <div class="console">
+      <!-- <div class="console">
 
 
-      </div>
+      </div> -->
     </div>
 
     <script>window.$ = window.jQuery = require('jquery');</script>
