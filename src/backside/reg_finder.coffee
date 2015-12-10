@@ -1,29 +1,40 @@
 
 ChildProcess =  require 'child_process'
-winReg = require 'winreg'
+#winReg = require 'winreg'
 
 OneDrive_Keys = ['\\Software\\Microsoft\\OneDrive']
 
-for key in OneDrive_Keys
-    regKey = new winReg({
-          hive: Winreg.HKCU,                                #HKEY_CURRENT_USER
-          key:  '\\Software\\Microsoft\\OneDrive' #key containing Onedrive
-        })
-    regKey.values( (err, items) -> 
-
-        if(err)
-            console.log 'ERROR: ' + err
-
-        else
-            for item in items
-                console.log 'Item: '+ item.name + '\t' + item.type + '\t' + item.value
-        )
+# for key in OneDrive_Keys
+#     regKey = new winReg({
+#           hive: Winreg.HKCU,                                #HKEY_CURRENT_USER
+#           key:  '\\Software\\Microsoft\\OneDrive' #key containing Onedrive
+#         })
+#     regKey.values( (err, items) ->
+#
+#         if(err)
+#             console.log 'ERROR: ' + err
+#
+#         else
+#             for item in items
+#                 console.log 'Item: '+ item.name + '\t' + item.type + '\t' + item.value
+#         )
+#
 
 
 module.exports =
 class Registry
 
     constructor: () ->
+        if process.env.SystemRoot
+            system32Path = path.join(process.env.SystemRoot, 'System32')
+            regPath = path.join(system32Path, 'reg.exe')
+        else
+            regPath = 'reg.exe'
+
+
+
+    getRegistry: (args) ->
+        spawnedProcess =  ChildProcess.spawn(regPath, args)
 
 
 #
