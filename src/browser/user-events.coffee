@@ -45,7 +45,7 @@ class userEvents
             onedriveFS = new Filesys('OneDrive')
 
             onedriveFS.searchFS('C:\\Users')
-            #graph(onedriveFS)
+            graph(onedriveFS)
             #console.log onedriveFS.tree
             event.sender.send 'actionReply', onedriveFS
 
@@ -53,7 +53,7 @@ class userEvents
             googledriveFS = new Filesys('Google Drive')
 
             googledriveFS.searchFS('C:\\Users')
-            #graph(onedriveFS)
+            graph(googledriveFS)
             #console.log onedriveFS.tree
             event.sender.send 'actionReply', googledriveFS
 
@@ -61,7 +61,7 @@ class userEvents
             dropboxFS = new Filesys('DropBox')
 
             dropboxFS.searchFS('C:\\Users')
-            #graph(onedriveFS)
+            graph(dropboxFS)
             #console.log onedriveFS.tree
             event.sender.send 'actionReply', dropboxFS
 
