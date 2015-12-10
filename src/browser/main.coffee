@@ -22,7 +22,7 @@ start = ->
     app.on 'ready', ->
 
 
-        ChizelApplication.open()
+        ChizelApplication.open(path.resolve(__dirname,'..','..','..'))
 
 
 setUpCrashReporter = ->

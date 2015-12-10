@@ -10,6 +10,46 @@ app = electron.app
 
 
 
+
+class HashTable
+
+
+    consturctor: (obj) ->
+        @length = 0
+        @items = {}
+        for k in obj
+            if obj.hasOwnProperty(k)
+                @item[p] = obj[p]
+                @length++
+
+    @add: (key, item) ->
+        i = 0
+        for k in items
+            if k is key
+                console.log 'conteins key'
+                i = 1
+                break
+        if i = 0
+            @items[key] =  item
+            @length
+
+    @getItem: (key) ->
+        if @hasItem(key)
+            return @items[key]
+        else
+            return undefined
+    @hasItem: (key) ->
+        return @items.hasOwnProperty(key);
+
+    @removeItem: (key) ->
+        if @hasItem(key)
+            previous = @items[key]
+            @length--
+            delete @item[key]
+            return previous
+
+
+
 module.exports =
 class ChizelApplication
     _.extend @prototype, eventEmitter.prototype
@@ -18,17 +58,19 @@ class ChizelApplication
     ChizelWindow: null
     CaseLoaded: false
     CasePath: ''
+    ChizelResources = ''
+    TabHTML = new HashTable({})
 
 
-    @open: (options) ->
-        createChizelApplication = new ChizelApplication()
+    @open: (option) ->
+        createChizelApplication = new ChizelApplication(option)
 
 
-    constructor: () ->
-
+    constructor: (option) ->
+        @ChizelResources = option
         global.ChizelApplication = this
         @applicationEvents()
-        @ChizelWindow = new ChizelWindow({})
+        @ChizelWindow = new ChizelWindow(@ChizelResources)
         userHandler = new userEventHandler()
 
     addWindow :  (window) ->
@@ -64,7 +106,5 @@ class ChizelApplication
         app.on 'gpu-process-crashed', -> # gpu process has creashed
 
         app.on 'select-certificate', -> # client certificate is requested
-
-
 
     exit: (status) -> app.exit(status)
