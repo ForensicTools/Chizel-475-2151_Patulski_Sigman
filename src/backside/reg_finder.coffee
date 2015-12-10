@@ -1,43 +1,50 @@
 
-ChildProcess =  require 'child_process'
-#winReg = require 'winreg'
+winReg = require 'winreg'
+events = require 'events'
 
-OneDrive_Keys = ['\\Software\\Microsoft\\OneDrive']
-
-# for key in OneDrive_Keys
-#     regKey = new winReg({
-#           hive: Winreg.HKCU,                                #HKEY_CURRENT_USER
-#           key:  '\\Software\\Microsoft\\OneDrive' #key containing Onedrive
-#         })
-#     regKey.values( (err, items) ->
-#
-#         if(err)
-#             console.log 'ERROR: ' + err
-#
-#         else
-#             for item in items
-#                 console.log 'Item: '+ item.name + '\t' + item.type + '\t' + item.value
-#         )
-#
-
+regEmitter = new events.EventEmitter()
 
 module.exports =
-class Registry
+Reg = (path) ->
+    regKey = new winReg({
+          hive: winReg.HKCU,                                #HKEY_CURRENT_USER
+          key: path  #key containing Onedrive
+        })
 
-    constructor: () ->
-        if process.env.SystemRoot
-            system32Path = path.join(process.env.SystemRoot, 'System32')
-            regPath = path.join(system32Path, 'reg.exe')
+    regKey.values( (err, items ) ->
+        #regHtml = '<table> <tr> <th>Name</th> <th>Type</th> <th>Value</th> </tr>'
+
+        if(err)
+             console.log 'ERROR: ' + err
+            #regHtml = '<table><td>There was an error!</td></table>'
         else
-            regPath = 'reg.exe'
+            for item in items
+                console.log 'Item: '+ item.name + '\t' + item.type + '\t' + item.value
+                #regHtml = regHtml + '<td>'+ item.name + '</td> <td>' + item.type + '</td> <td>'+ item.value + '</td>'
 
+            #regHtml = regHtml + '</table>'
 
-
-    getRegistry: (args) ->
-        spawnedProcess =  ChildProcess.spawn(regPath, args)
-
+        #regEmitter.emit 'one-drive-reg' , regHtml
+        )
 
 #
+# module.exports =
+# class Registry
+#
+#     constructor: () ->
+#         if process.env.SystemRoot
+#             system32Path = path.join(process.env.SystemRoot, 'System32')
+#             regPath = path.join(system32Path, 'reg.exe')
+#         else
+#             regPath = 'reg.exe'
+#
+#
+#
+#     getRegistry: (args) ->
+#         spawnedProcess =  ChildProcess.spawn(regPath, args)
+#
+#
+# #
 # `
 # var Onedrive_key = ['\\Software\\Microsoft\\OneDrive']
 # var key_array_length = Onedrive_key.length;
