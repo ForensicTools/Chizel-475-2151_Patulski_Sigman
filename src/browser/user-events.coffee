@@ -46,15 +46,15 @@ class userEvents
 
             onedriveFS.searchFS('C:\\Users')
             graph(onedriveFS)
-            #console.log onedriveFS.tree
-            event.sender.send 'actionReply', onedriveFS
+            registry('\\Software\\Microsoft\\OneDrive')
+            event.sender.send 'actionReply', {fs:onedriveFS}
 
         ipcMain.on 'google-drive', (event, data) ->
             googledriveFS = new Filesys('Google Drive')
 
             googledriveFS.searchFS('C:\\Users')
             graph(googledriveFS)
-            #console.log onedriveFS.tree
+            registry('\\Software\\Google')
             event.sender.send 'actionReply', googledriveFS
 
         ipcMain.on 'drop-box', (event, data) ->
@@ -67,3 +67,7 @@ class userEvents
 
 
         ipcMain.on 'tab-click',  (event, data) ->
+
+
+        # ipcMain.on 'one-drive-reg', (event, data) ->
+        #     console.log 'fjlksdhflkjsdhfkjhsdjfh'
