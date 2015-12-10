@@ -2,6 +2,8 @@
 # if document.body.style['-webkit-mask-repeat'] isnt undefined
 #     $('html').addClass('cssmasks')
 # else
+uuid = require 'uuid'
+
 $('html').addClass('cssmasks')
 
 tabTemplate = '''
@@ -32,7 +34,7 @@ chromeTabs =
     init: (options) ->
         for key of options
             if key isnt '$shell'
-                options.$shell[key] = options
+                options.$shell[key] = options[key]
         options.$shell.prepend animationStyle
         options.$shell
             .find('.chrome-tab').each ->
@@ -42,6 +44,7 @@ chromeTabs =
             chromeTabs.render options.$shell
 
         $(window).resize render
+        #console.log options.$shell
         render()
 
     render: ($shell) ->
@@ -149,15 +152,20 @@ chromeTabs =
         $shell.find('.chrome-tab').each ->
             $tab = $ @
             $tab.unbind('click').click ->
-                console.log 'click'
+
+                $shell.tabEmitter.emit 'tab-click',  $tab.uuid
+
                 chromeTabs.setCurrentTab $shell, $tab
 
             $tab.find('.chrome-tab-close').unbind('click').click ->
-                console.log 'close'
+
+                $shell.tabEmitter.emit 'tab-close'
+
                 chromeTabs.closeTab $shell, $tab
 
     addNewTab: ($shell, newTabData) ->
         $newTab = $ tabTemplate
+        $newTab.uuid =  uuid.v4()
         $shell.find('.chrome-tabs').append $newTab
         tabData = $.extend true, {}, defaultNewTabData, newTabData
         chromeTabs.updateTab $shell, $newTab, tabData
@@ -177,9 +185,6 @@ chromeTabs =
         $tab.remove()
         chromeTabs.render $shell
 
-    getCurrentTab:($shell) ->
-        $shell.find('.chrome-tab-current ')
-        
     updateTab: ($shell, $tab, tabData) ->
         $tab.find('.chrome-tab-title').html tabData.title
         #$tab.find('.chrome-tab-favicon').css backgroundImage: "url('#{tabData.favicon}')"
