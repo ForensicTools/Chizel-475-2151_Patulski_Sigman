@@ -31,6 +31,7 @@ var treeviewDest = 'static/lib/bootstrap-treeview/';
 var lessSource = 'static/less/*.less';
 var lessDest = 'static/css/';
 
+var d3Source = 'node_modules/d3/d3.min.js'
 
 // gulp.task('serve', function(){
 //     console.log(process.cwd())
@@ -45,6 +46,11 @@ var lessDest = 'static/css/';
 //     electron.reload();
 // });
 
+
+gulp.task('d3',  function(){
+   gulp.src(d3Source)
+   .pipe(gulp.dest('static/d3/'));
+});
 gulp.task('coffee', function() {
     for (var _i = 0; _i < coffeeDir.length; _i++)
     {
@@ -80,7 +86,7 @@ gulp.task('bootstrap-treeview', function(){
     gulp.src(treeviewSource).pipe(gulp.dest(treeviewDest));
 });
 
-gulp.task('genlib',['jquery', 'bootstrap', 'bootstrapFont','bootstrap-treeview']);
+gulp.task('genlib',['jquery', 'bootstrap', 'bootstrapFont','bootstrap-treeview','d3']);
 
 gulp.task('watch', function(){
     gulp.watch('src/**/*.coffee', ['coffee']);
@@ -98,7 +104,7 @@ gulp.task('build', function(){
 
     };
     packager(opts, function done (err, appPath){
-        
+
     });
 });
 gulp.task('default', ['coffee','less','watch']);
