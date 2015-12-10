@@ -11,8 +11,12 @@ _ = require 'underscore-plus'
 Filesys = require '../backside/filesystem_chizelin'
 electron = require 'electron'
 graph = require '../backside/updates_graph'
+registry =  require '../backside/reg_finder'
+
 app = electron.app
 ipcMain = electron.ipcMain
+
+
 
 module.exports =
 class userEvents
@@ -26,7 +30,13 @@ class userEvents
 
         ipcMain.on 'create-case', (event, data) ->
             console.log data
-            event.sender.send 'actionReply', 'yo get chizelin!!!'
+            global.ChizelApplication.CaseLoaded = true
+            global.ChizelApplication.CasePath = data
+            reg =  new registry()
+
+            reg.getRegistry(['export','HKCU',data])
+
+            event.sender.send 'actionReply', 'Case Path Accpeted'
 
         ipcMain.on 'open-case', (event, data ) ->
             event.sender.send 'actionReply', 'case is open'
@@ -35,6 +45,25 @@ class userEvents
             onedriveFS = new Filesys('OneDrive')
 
             onedriveFS.searchFS('C:\\Users')
-            graph(onedriveFS)
+            #graph(onedriveFS)
             #console.log onedriveFS.tree
             event.sender.send 'actionReply', onedriveFS
+
+        ipcMain.on 'google-drive', (event, data) ->
+            googledriveFS = new Filesys('Google Drive')
+
+            googledriveFS.searchFS('C:\\Users')
+            #graph(onedriveFS)
+            #console.log onedriveFS.tree
+            event.sender.send 'actionReply', googledriveFS
+
+        ipcMain.on 'drop-box', (event, data) ->
+            dropboxFS = new Filesys('DropBox')
+
+            dropboxFS.searchFS('C:\\Users')
+            #graph(onedriveFS)
+            #console.log onedriveFS.tree
+            event.sender.send 'actionReply', dropboxFS
+
+
+        ipcMain.on 'tab-click',  (event, data) ->
