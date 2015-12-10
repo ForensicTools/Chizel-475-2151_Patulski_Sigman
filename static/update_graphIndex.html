@@ -19,7 +19,7 @@ body {
 
 </style>
 <body>
-<script src="//d3js.org/d3.v3.min.js"></script>
+
 <script>
 
 var margin = {top: 20, right: 20, bottom: 30, left: 50},
@@ -53,7 +53,7 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.tsv("data.tsv", function(error, data) {
+d3.csv("data.csv", function(error, data) {
   if (error) throw error;
 
   data.forEach(function(d) {
