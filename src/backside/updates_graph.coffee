@@ -23,16 +23,20 @@ module.exports =
       all_files = FileSys.files
       myregex = /logs\\Personal/
       # console.log(FileSys.files)
-      fd = fs.openSync('static\\data.tsv', 'w')
+      fd = fs.openSync('static\\data.csv', 'w')
+      sortNumber = (a, b) ->
+        a - b
       for files in all_files
         if myregex.test(files) == true
           matches.push(files)
+      console.log(matches.sort(sortNumber))
       while i < matches.length
         if matches[i] != null
           # file_array = matches[i].split "\\"
           # sync_date = file_array[9]
           temp_date_array.push(date_regex.exec(matches[i]))
         i++
+      #console.log(temp_date_array)
       while j < temp_date_array.length
         if temp_date_array[j] != null
           date = temp_date_array[j][0]
@@ -45,8 +49,11 @@ module.exports =
           else
             dict[month]+=1
         j++
+      final_array.push("date,close" + "\n")
       for line in date_array
         check = line.split('-')
-        final_array.push(line + ' ' + dict[check[1]] + "\n")
-      fs.writeSync(fd, final_array)
+        console.log(line)
+        final_array.push(line + ',' + dict[check[1]] + "\n")
+      fs.writeSync(fd, final_array.join(""))
       fs.closeSync(fd)
+      console.log(dict)
