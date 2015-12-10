@@ -2,7 +2,7 @@
 # if document.body.style['-webkit-mask-repeat'] isnt undefined
 #     $('html').addClass('cssmasks')
 # else
-uuid = require 'uuid'
+
 
 $('html').addClass('cssmasks')
 
@@ -153,8 +153,7 @@ chromeTabs =
             $tab = $ @
             $tab.unbind('click').click ->
 
-                $shell.tabEmitter.emit 'tab-click',  $tab.uuid
-
+                $shell.tabEmitter.emit 'tab-click',  $tab
                 chromeTabs.setCurrentTab $shell, $tab
 
             $tab.find('.chrome-tab-close').unbind('click').click ->
@@ -163,9 +162,9 @@ chromeTabs =
 
                 chromeTabs.closeTab $shell, $tab
 
-    addNewTab: ($shell, newTabData) ->
+    addNewTab: ($shell, newTabData, uuid) ->
         $newTab = $ tabTemplate
-        $newTab.uuid =  uuid.v4()
+        $newTab.data('uuid', uuid)
         $shell.find('.chrome-tabs').append $newTab
         tabData = $.extend true, {}, defaultNewTabData, newTabData
         chromeTabs.updateTab $shell, $newTab, tabData
