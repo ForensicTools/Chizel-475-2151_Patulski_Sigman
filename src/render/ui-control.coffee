@@ -88,8 +88,14 @@ Analyze_OneDrive = () ->
             treelist = []
             treelist.push treeView.tree
             $('#tree').treeview({data: treelist})
+            chromeTabs.addNewTab($shell_tabs, {title:"OneDrive Activity"})
+            fs.readFile(BaseDir + '\\update_graphIndex.html',{encoding:'utf-8'},(error, data) ->
+                      console.log data
+                      if error
+                          $('div.viewer').html(error)
+                      else
 
-
+                          $('div.viewer').html(data))
 
 initDisplay()
 tabListener()
