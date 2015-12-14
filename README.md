@@ -3,7 +3,7 @@
 #WELCOME TO CHIZEL. ENJOY!!!!!
 
 ##ABOUT
-Chizel is a cloud storage integrator.  It streamlines the process of collecting cloud artifacts on a box in order to gain access to a cloud storage account.  When access to the account is granted, data stored on the cloud is collected, analyzed, and presented in a clear manner.  If Chizel can not gain access to the cloud storage account, it will analyze what it can from the box.
+Chizel is a cloud storage interrogator.  It streamlines the process of collecting cloud artifacts on a box in order to gain access to a cloud storage account.  When access to the account is granted, data stored on the cloud is collected, analyzed, and presented in a clear manner.  If Chizel can not gain access to the cloud storage account, it will analyze what it can from the box.
 
 
 
