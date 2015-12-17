@@ -51,9 +51,9 @@ GitHub's Electron. Electron is a framework that lets you develop Desktop applica
 using web technologies (Javascript, html, css).
 
 ##Resources and links
-<http://electron.atom.io> -Electron's home site
-<http://Nodejs.org> -javascript runtime used by electron
-<https://github.com/sindresorhus/awesome-electron> - other electron projects and tools for developing in electron.
+* <http://electron.atom.io> -Electron's home site
+* <http://Nodejs.org> -javascript runtime used by electron
+* <https://github.com/sindresorhus/awesome-electron> - other electron projects and tools for developing in electron.
 
 ##CONTACT
 Rich Patulski rwp7402@rit.edu
