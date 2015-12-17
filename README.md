@@ -6,7 +6,7 @@
 Chizel is a cloud storage interrogator.  It streamlines the process of collecting, analyzing, and presenting cloud storage artifacts.
 
 
-##INSTALLATION / Build
+##INSTALLATION / BUILD
 * Chizel can be packaged into an exe with the use of electron-packager. <https://github.com/maxogden/electron-packager>
 
 ##Usage
