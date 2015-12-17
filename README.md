@@ -13,7 +13,7 @@ Chizel is a cloud storage interrogator.  It streamlines the process of collectin
 * Runs locally on a targets machine collecting data.
 
 ## Gulp
-* Uses gulp to create workflow - defined in the gulpFile.js
+* Uses gulp to create workflow - defined in the gulpFile.js file
 * Some tasks are:
 * gulp - default task complies coffeescript and less files.
 * gulp genlib - moves all the dependecies into the right folders.
