@@ -1,3 +1,10 @@
+###
+file: chizel-application.coffee
+purpose:
+Is the entry point of Chizel Application.
+Handles the life cycle of Chizel and
+events that are specific to the appliction.
+###
 path = require 'path'
 os = require 'os'
 eventEmitter = require 'events'

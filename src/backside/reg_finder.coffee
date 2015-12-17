@@ -1,3 +1,8 @@
+###
+file: reg_finder.coffee
+purpose:
+searches computer for registry entris specific to cloude storage services 
+###
 
 winReg = require 'winreg'
 events = require 'events'

@@ -1,3 +1,10 @@
+###
+file: viewer.coffee
+status: not implemented
+purpose:
+handles events and ui of main view section of chizel
+###
+
 $ = require 'jquery'
 
 

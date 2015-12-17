@@ -1,3 +1,12 @@
+###
+file: chrome-tabs.coffee
+
+purpose:
+handles the functionailty of the chrome tabs.
+###
+
+
+
 #
 # if document.body.style['-webkit-mask-repeat'] isnt undefined
 #     $('html').addClass('cssmasks')

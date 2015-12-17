@@ -1,3 +1,11 @@
+###
+File: main.coffee
+Purpose:
+Starts the Chizel application.
+Allows Chizel to be a more dymanic application.
+Meaning you can specify options before application
+is up and running.
+###
 path = require 'path'
 fs = require 'fs'
 url = require 'url'

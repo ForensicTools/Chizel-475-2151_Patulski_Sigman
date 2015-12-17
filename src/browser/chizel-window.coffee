@@ -1,3 +1,9 @@
+###
+File: chizel-window.coffee
+Purpose:
+Opens BrowserWindow and handles events
+assocaited with the Window. 
+###
 path = require 'path'
 fs = require 'fs'
 url = require 'url'
