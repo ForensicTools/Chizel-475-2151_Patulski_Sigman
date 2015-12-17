@@ -7,13 +7,11 @@ Chizel is a cloud storage interrogator.  It streamlines the process of collectin
 
 
 ##INSTALLATION
-*Chizel can be packaged into an exe with the use of electron-packager.
-<https://github.com/maxogden/electron-packager>
+* Chizel can be packaged into an exe with the use of electron-packager. <https://github.com/maxogden/electron-packager>
 * gulp command - gulp build
 
 ##Usage
 * Runs locally on a targets machine collecting data.
-* 
 
 ## Gulp
 * Uses gulp to create workflow - defined in the gulpFile.js
