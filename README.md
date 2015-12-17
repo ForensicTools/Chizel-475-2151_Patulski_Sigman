@@ -46,9 +46,12 @@ cloud storage services. - parse files found and send data to the applications vi
 ![Alt text](https://github.com/patulskitime/Chizel-475-2151_Patulski_Sigman/blob/master/Chizel_ex_TreeView.PNG)
 
 ##The making of Chizel
-Chizel is made using web technologies made possible by
+* Chizel is made using web technologies made possible by
 GitHub's Electron. Electron is a framework that lets you develop Desktop application
 using web technologies (Javascript, html, css).
+### Research
+* Link to a study done on cloud storage forensics. Where we got most of are information on cloud storage services.
+* <https://digital-forensics.sans.org/summit-archives/Prague_Summit/Cloud_Storage_Forensics_Mattia_Eppifani.pdf>
 
 ##Resources and links
 * <http://electron.atom.io> -Electron's home site
@@ -56,5 +59,5 @@ using web technologies (Javascript, html, css).
 * <https://github.com/sindresorhus/awesome-electron> - other electron projects and tools for developing in electron.
 
 ##CONTACT
-Rich Patulski rwp7402@rit.edu
-Jason Sigman js2181@rit.edu
+* Rich Patulski rwp7402@rit.edu
+* Jason Sigman js2181@rit.edu
