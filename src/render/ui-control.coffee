@@ -64,7 +64,7 @@ initDisplay = () ->
     welcome = "
         <div class='jumbotron'><div class='container'><h1>Hello, Welcome to...</h1>
         <img src='Chizel_asciiArt.PNG' alt='Chizel Picture' style='width:1200px;height:250px;''>
-        <p>Chizel is a cloud storage integrator. It streamlines the process of collecting cloud artifacts on a box. Data stored on the local computer is analyzed, and presented in a clear manner.</p>
+        <p>Chizel is a cloud storage interrogator. It streamlines the process of collecting cloud artifacts on a box. Data stored on the local computer is analyzed, and presented in a clear manner.</p>
         <p><a class='btn btn-primary btn-lg' href='#' role='button'>Learn more &raquo;</a></p></div></div>
 <div class='container'>
 <div class='row'>
