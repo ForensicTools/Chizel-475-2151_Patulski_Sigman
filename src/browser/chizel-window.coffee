@@ -1,11 +1,20 @@
-app = require 'app'
+###
+File: chizel-window.coffee
+Purpose:
+Opens BrowserWindow and handles events
+assocaited with the Window. 
+###
 path = require 'path'
-BrowserWindow = require 'browser-window'
-dialog = require 'dialog'
 fs = require 'fs'
 url = require 'url'
 _ = require 'underscore-plus'
 eventEmitter = require 'events'
+
+electron = require 'electron'
+browserWindow = electron.BrowserWindow
+app = electron.app
+dialog = electron.dialog
+
 
 
 module.exports =
@@ -15,15 +24,15 @@ class ChizelWindow
     mainWindow:null
     loaded:null
 
-    constructor:(options) ->
+    constructor:(path) ->
 
         #global.ChizelApplication.addWindow(this)
 
-        @mainWindow = new BrowserWindow options
-        @mainWindow.openDevTools()
-        @mainWindow.loadUrl url.format
+        @mainWindow = new browserWindow {}
+        #@mainWindow.openDevTools()
+        @mainWindow.loadURL url.format
             protocol: 'file'
-            pathname:  process.cwd() + "/static/index.html"
+            pathname:  path + "/static/index.html"
             slashs:true
 
 
@@ -36,7 +45,7 @@ class ChizelWindow
 
         @mainWindow.on 'close', -> #when window is going to close
         @mainWindow.on 'closed', ->  #the window is close deference the window object
-            global.ChizelApplication.removeWindow()
+            #global.ChizelApplication.removeWindow()
         @mainWindow.on 'unresponsive', => # web page become what it says
 
         @mainWindow.on 'responsive', -> # web page is responsive from being unresponsive

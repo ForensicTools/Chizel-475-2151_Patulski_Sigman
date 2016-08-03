@@ -1,3 +1,10 @@
+###
+file: console.coffee
+Status: not implemented
+Purpose:
+displays information about the application
+to the user.
+###
 $ =  require 'jquery'
 
 

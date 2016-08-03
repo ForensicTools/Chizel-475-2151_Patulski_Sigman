@@ -17,4 +17,5 @@ spec/fixtures/evil-files/
 lib/
 scripts/
 to-do.txt
-css/
+static/jquery-ui-1.11.4
+static/tabs

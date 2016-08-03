@@ -1,30 +1,40 @@
-app = require 'app'
-url = require 'url'
-menu = require 'menu'
+###
+File: main.coffee
+Purpose:
+Starts the Chizel application.
+Allows Chizel to be a more dymanic application.
+Meaning you can specify options before application
+is up and running.
+###
 path = require 'path'
 fs = require 'fs'
-ipc = require 'ipc'
+url = require 'url'
 os = require 'os'
-Menu = require 'menu'
-MenuItem = require 'menu-item'
 _ = require 'underscore-plus'
-crashReport = require 'crash-reporter'
 eventEmitter = require 'events'
-browserWindow = require 'browser-window'
 ChizelApplication = require './chizel-application'
+
+electron = require 'electron'
+app = electron.app
+menu = electron.menu
+ipcMain = electron.ipcMain
+menuItem = electron.MenuItem
+crashReport = electron.crashReporter
+browserWindow = electron.BrowserWindow
+
 
 start = ->
 
-    setUpCrashReporter()
+    # setUpCrashReporter()
 
     app.on 'ready', ->
 
 
-        ChizelApplication.open()
+        ChizelApplication.open(path.resolve(__dirname,'..','..','..'))
 
-
-setUpCrashReporter = ->
-    crashReport.start()
+#
+# setUpCrashReporter = ->
+#     crashReport.start()
 
 
 
